@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #fafafa;
+  --ink: #0a0a0a;
+  --ink-soft: #1a1a1a;
+  --secondary: #0a0a0a;
+  --accent: #1a1a1a;
+  --surface: #f2f2f2;
+  --surface-2: #e8e8e8;
+  --line: #e5e5e5;
+  --text: #0a0a0a;
+  --text-muted: #6b6b6b;
+  --gradient: linear-gradient(135deg, #0a0a0a, #2e2e2e);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--primary);
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: var(--primary);
+  color: var(--text);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+::selection {
+  background: var(--ink);
+  color: #fafafa;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f2f2f2;
+}
+::-webkit-scrollbar-thumb {
+  background: #0a0a0a;
+  border-radius: 999px;
+}
+
+/* Outlined heading utility */
+.text-stroke {
+  -webkit-text-stroke: 1.5px var(--ink);
+  color: transparent;
+}
+
+.text-stroke-muted {
+  -webkit-text-stroke: 1px var(--text-muted);
+  color: transparent;
+}
+
+.brand-gradient-text {
+  background: linear-gradient(180deg, #0a0a0a 0%, #8a8a8a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glow-border {
+  position: relative;
+}
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--ink);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.glow-border:hover::before {
+  opacity: 1;
+}
+
+/* Section paddings */
+.section-pad {
+  padding-block: clamp(4rem, 9vw, 8rem);
+}
+
+.container-x {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 1280px;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.noise-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 4px 4px;
+  opacity: 0.6;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+/* clip-path reveal helpers */
+.clip-reveal-init {
+  clip-path: inset(0 100% 0 0);
+}
+.clip-reveal-init-y {
+  clip-path: inset(0 0 100% 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

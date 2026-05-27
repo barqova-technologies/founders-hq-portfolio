@@ -9,16 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#FAFAFA",
-        ink: "#0A0A0A",
-        "ink-soft": "#1A1A1A",
-        secondary: "#0A0A0A",
-        accent: "#1A1A1A",
-        surface: "#F2F2F2",
-        "surface-light": "#E8E8E8",
-        line: "#E5E5E5",
-        text: "#0A0A0A",
-        "text-muted": "#6B6B6B",
+        primary: "rgb(var(--primary) / <alpha-value>)",
+        ink: "rgb(var(--ink) / <alpha-value>)",
+        "ink-soft": "rgb(var(--ink-soft) / <alpha-value>)",
+        secondary: "rgb(var(--secondary) / <alpha-value>)",
+        accent: "rgb(var(--accent) / <alpha-value>)",
+        surface: "rgb(var(--surface) / <alpha-value>)",
+        "surface-light": "rgb(var(--surface-2) / <alpha-value>)",
+        line: "rgb(var(--line) / <alpha-value>)",
+        text: "rgb(var(--text) / <alpha-value>)",
+        "text-muted": "rgb(var(--text-muted) / <alpha-value>)",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],

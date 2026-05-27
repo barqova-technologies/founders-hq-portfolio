@@ -6,8 +6,7 @@ import PinnedPrograms from "@/components/home/PinnedPrograms";
 import MarqueeStrip from "@/components/home/MarqueeStrip";
 import CohortShowcase from "@/components/home/CohortShowcase";
 import Meetups from "@/components/home/Meetups";
-import Testimonials from "@/components/home/Testimonials";
-import ClientLogos from "@/components/home/ClientLogos";
+import FoundingNote from "@/components/home/FoundingNote";
 import CTABanner from "@/components/home/CTABanner";
 
 export default function HomePage() {
@@ -21,8 +20,7 @@ export default function HomePage() {
       <PinnedPrograms />
       <CohortShowcase />
       <Meetups />
-      <Testimonials />
-      <ClientLogos />
+      <FoundingNote />
       <CTABanner />
     </>
   );

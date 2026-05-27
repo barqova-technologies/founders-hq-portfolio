@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "@/lib/motion";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import MagneticButton from "@/components/ui/MagneticButton";
@@ -12,6 +13,7 @@ export default function CTABanner() {
 
   useEffect(() => {
     if (!root.current) return;
+    if (prefersReducedMotion()) return;
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       gsap.from("[data-cta-headline]", {
@@ -67,18 +69,18 @@ export default function CTABanner() {
 
           <div className="relative grid gap-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
-              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.4em] text-white/70">
-                Cohort 13 &middot; Applications close Jun 06
+              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.4em] text-primary/70">
+                Cohort 01 &middot; Applications open
               </p>
               <h2
                 data-cta-headline
-                className="font-display text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
+                className="font-display text-4xl font-bold leading-[1] tracking-tight text-primary sm:text-5xl md:text-6xl lg:text-7xl"
               >
                 Bring a deck. Or just bring a problem.
               </h2>
               <p
                 data-cta-sub
-                className="mt-6 max-w-xl text-base text-white/70 md:text-lg"
+                className="mt-6 max-w-xl text-base text-primary/70 md:text-lg"
               >
                 We read every application. If your company isn&rsquo;t a fit
                 yet, we&rsquo;ll point you at the meetup, mentor or peer cohort
@@ -89,7 +91,7 @@ export default function CTABanner() {
               <Link href="/join" className="inline-block">
                 <MagneticButton
                   variant="inverse"
-                  className="bg-white text-ink hover:bg-white/90"
+                  className="bg-primary text-ink hover:opacity-90"
                 >
                   Join the Community
                   <ArrowUpRight size={16} />

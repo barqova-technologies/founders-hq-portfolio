@@ -1,6 +1,6 @@
-# Founder's HQ — Portfolio
+# Founder's HQ - Portfolio
 
-Marketing site for **Founder's HQ**, a working community of operators and outliers running cohort accelerators, founder meetups and a 200+ mentor network across six Indian cities.
+Marketing site for **Founder's HQ**, a new working community of operators and outliers - starting in Lucknow with a founding cohort, regular founder meetups and a hand-picked mentor bench. Cohort 01 applications are open.
 
 Built with the Next.js App Router, TypeScript, Tailwind CSS, GSAP and Framer Motion.
 
@@ -59,6 +59,6 @@ Then open http://localhost:3000.
 
 ## Notes
 
-- All routes are statically prerendered (`○ Static` in the build output) — no runtime server logic is required.
-- No environment variables are needed for the current build.
+- All routes are statically prerendered (`○ Static` in the build output) - no runtime server logic is required.
+- The Join page form posts to a no-backend form service. Set `NEXT_PUBLIC_FORM_ENDPOINT` in `.env.local` (see `.env.example`) to your Formspree/Web3Forms/Getform form URL. Without it, the form shows a "not connected yet" message.
 - `next-env.d.ts` and `*.tsbuildinfo` are intentionally git-ignored; Next.js regenerates them.

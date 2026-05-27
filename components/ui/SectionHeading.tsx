@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "@/lib/motion";
 
 type Props = {
   eyebrow?: string;
@@ -23,6 +24,7 @@ export default function SectionHeading({
 
   useEffect(() => {
     if (!ref.current) return;
+    if (prefersReducedMotion()) return;
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       gsap.from(ref.current!.querySelectorAll("[data-anim]"), {

@@ -52,7 +52,7 @@ export default function PinnedPrograms() {
         <SectionHeading
           eyebrow="Inside The HQ"
           title="Six programs. One operating system."
-          subtitle="Scroll through what we run. Each program plugs into the others — by design."
+          subtitle="Scroll through what we run. Each program plugs into the others - by design."
         />
       </div>
 
@@ -72,7 +72,7 @@ export default function PinnedPrograms() {
                   Program {String(active + 1).padStart(2, "0")} / 06
                 </span>
                 <span className="text-[10px] uppercase tracking-[0.3em] text-white/70">
-                  Live
+                  Program
                 </span>
               </div>
 

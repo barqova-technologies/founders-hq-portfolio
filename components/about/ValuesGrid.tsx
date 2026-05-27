@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "@/lib/motion";
 import { Compass, Hammer, Sparkles, ShieldCheck } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { VALUES } from "@/lib/data";
@@ -14,6 +15,7 @@ export default function ValuesGrid() {
 
   useEffect(() => {
     if (!root.current) return;
+    if (prefersReducedMotion()) return;
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       gsap.from("[data-value-card]", {
@@ -66,20 +68,20 @@ export default function ValuesGrid() {
         <div className="mt-16 rounded-3xl border border-ink bg-ink p-10 text-primary md:p-14">
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.4em] text-white/60">
+              <p className="text-xs font-semibold uppercase tracking-[0.4em] text-primary/60">
                 One Promise
               </p>
               <h3 className="mt-3 font-display text-3xl font-bold md:text-5xl">
                 We&rsquo;ll keep the rooms small.
               </h3>
-              <p className="mt-3 max-w-xl text-white/70">
-                The community has grown 100x since the first dinner — but
-                cohorts, peer groups and dinners haven&rsquo;t. They&rsquo;re
-                still under twelve people. They always will be.
+              <p className="mt-3 max-w-xl text-primary/70">
+                However big the community gets, cohorts, peer groups and dinners
+                won&rsquo;t. They&rsquo;ll stay under twelve people. They always
+                will be.
               </p>
             </div>
-            <div className="rounded-2xl border border-white/30 px-5 py-3 text-xs uppercase tracking-[0.3em] text-white/80">
-              Est. 2018 &middot; Hyderabad &middot; India
+            <div className="rounded-2xl border border-primary/30 px-5 py-3 text-xs uppercase tracking-[0.3em] text-primary/80">
+              Est. 2026 &middot; Lucknow &middot; India
             </div>
           </div>
         </div>

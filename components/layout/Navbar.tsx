@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { NAV_LINKS } from "@/lib/data";
+import { NAV_LINKS, SITE } from "@/lib/data";
+import ThemeToggle from "@/components/layout/ThemeToggle";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -74,22 +75,22 @@ export default function Navbar() {
             })}
           </nav>
 
-          <div className="hidden lg:block">
+          <div className="flex items-center gap-2 lg:gap-3">
+            <ThemeToggle />
             <Link
               href="/join"
-              className="rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-primary shadow-[0_8px_24px_-8px_rgba(0,0,0,0.4)] transition-transform hover:-translate-y-0.5"
+              className="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-primary shadow-[0_8px_24px_-8px_rgba(0,0,0,0.4)] transition-transform hover:-translate-y-0.5 lg:inline-block"
             >
               Join the Community
             </Link>
+            <button
+              aria-label="Toggle menu"
+              onClick={() => setOpen((v) => !v)}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line bg-surface text-ink lg:hidden"
+            >
+              {open ? <X size={18} /> : <Menu size={18} />}
+            </button>
           </div>
-
-          <button
-            aria-label="Toggle menu"
-            onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line bg-surface text-ink lg:hidden"
-          >
-            {open ? <X size={18} /> : <Menu size={18} />}
-          </button>
         </div>
       </header>
 
@@ -120,7 +121,7 @@ export default function Navbar() {
               ))}
             </div>
             <div className="border-t border-line px-8 py-6 text-sm text-text-muted">
-              hello@foundershq.in
+              {SITE.email}
             </div>
           </motion.div>
         )}

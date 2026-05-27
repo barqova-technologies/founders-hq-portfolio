@@ -4,23 +4,32 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "@/lib/motion";
 import { ArrowUpRight } from "lucide-react";
+import { SITE } from "@/lib/data";
 
 export default function Manifesto() {
   const root = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!root.current) return;
+    if (prefersReducedMotion()) return;
     gsap.registerPlugin(ScrollTrigger);
+
+    const styles = getComputedStyle(document.documentElement);
+    const ink = `rgb(${styles.getPropertyValue("--ink").trim() || "10 10 10"})`;
+    const muted = `rgb(${
+      styles.getPropertyValue("--text-muted").trim() || "107 107 107"
+    } / 0.5)`;
 
     const ctx = gsap.context(() => {
       const words =
         root.current!.querySelectorAll<HTMLSpanElement>("[data-mword]");
       gsap.fromTo(
         words,
-        { color: "#C9C9C9" },
+        { color: muted },
         {
-          color: "#0A0A0A",
+          color: ink,
           stagger: 0.025,
           ease: "none",
           scrollTrigger: {
@@ -49,9 +58,7 @@ export default function Manifesto() {
     return () => ctx.revert();
   }, []);
 
-  const text =
-    "Founder's HQ is a working community of operators, builders and outliers — a place where conviction gets stress-tested, capital gets close, and the next ten years of Indian startups get written in private rooms before they show up on Twitter.";
-  const words = text.split(" ");
+  const words = SITE.manifesto.split(" ");
 
   return (
     <section ref={root} className="section-pad">

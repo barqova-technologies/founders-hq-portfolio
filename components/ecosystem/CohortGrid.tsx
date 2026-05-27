@@ -3,15 +3,20 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "@/lib/motion";
 import { ArrowUpRight } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { COHORT_COMPANIES } from "@/lib/data";
+import { COHORT_TRACKS } from "@/lib/data";
 
 export default function CohortGrid() {
   const root = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!root.current) return;
+    if (prefersReducedMotion()) {
+      gsap.set("[data-cgrid-card]", { opacity: 1, y: 0, clipPath: "none" });
+      return;
+    }
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       gsap.fromTo(
@@ -39,15 +44,15 @@ export default function CohortGrid() {
     <section ref={root} className="section-pad bg-surface">
       <div className="container-x">
         <SectionHeading
-          eyebrow="The Portfolio"
-          title="Companies built inside the HQ."
-          subtitle="A working snapshot of what alumni and current cohort founders are shipping right now."
+          eyebrow="Who We Back"
+          title="The kinds of companies Cohort 01 is built for."
+          subtitle="We're sector-agnostic but conviction-heavy. These are the tracks we're actively looking for in the founding cohort."
         />
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {COHORT_COMPANIES.map((c, i) => (
+          {COHORT_TRACKS.map((c) => (
             <article
-              key={c.name}
+              key={c.title}
               data-cgrid-card
               className="group relative h-[360px] overflow-hidden rounded-3xl border border-line"
               style={{ background: c.gradient }}
@@ -61,16 +66,16 @@ export default function CohortGrid() {
                     {c.category}
                   </span>
                   <span className="text-[10px] uppercase tracking-[0.25em] text-white/70">
-                    {c.cohort}
+                    Cohort 01
                   </span>
                 </div>
                 <div>
                   <h3 className="font-display text-3xl font-bold leading-tight text-white">
-                    {c.name}
+                    {c.title}
                   </h3>
                   <p className="mt-2 text-sm text-white/80">{c.blurb}</p>
                   <p className="mt-3 inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-white/60">
-                    <span>{c.founder}</span>
+                    <span>Now forming</span>
                     <ArrowUpRight
                       size={14}
                       className="transition-transform duration-500 group-hover:rotate-45"

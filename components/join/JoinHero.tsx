@@ -4,12 +4,25 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitText from "@/components/ui/SplitText";
+import { prefersReducedMotion } from "@/lib/motion";
 
 export default function JoinHero() {
   const root = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!root.current) return;
+    if (prefersReducedMotion()) {
+      gsap.set(root.current.querySelectorAll("[data-split-char]"), {
+        opacity: 1,
+        y: 0,
+        rotateX: 0,
+      });
+      gsap.set(root.current.querySelectorAll("[data-j-eyebrow]"), {
+        opacity: 1,
+        y: 0,
+      });
+      return;
+    }
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
@@ -90,7 +103,7 @@ export default function JoinHero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ink opacity-60" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-ink" />
           </span>
-          Cohort 13 applications open &middot; closes Jun 06
+          Cohort 01 applications open &middot; Lucknow
         </div>
 
         <h1 className="font-display text-display font-bold text-ink">
@@ -106,7 +119,7 @@ export default function JoinHero() {
           data-j-sub
           className="mt-8 max-w-2xl text-base leading-relaxed text-text-muted md:text-lg"
         >
-          Apply to a cohort, RSVP for a meetup, sign up to mentor — or just say
+          Apply to a cohort, RSVP for a meetup, sign up to mentor - or just say
           hi. There&rsquo;s no wrong reason to write. We read every message,
           and if it isn&rsquo;t a fit yet, we&rsquo;ll point you at the room
           that is.
@@ -116,11 +129,11 @@ export default function JoinHero() {
           data-j-meta
           className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-4 text-xs uppercase tracking-[0.3em] text-text-muted"
         >
-          <span>1,200+ Founders</span>
+          <span>Cohort 01 Forming</span>
           <span className="hidden h-1 w-1 rounded-full bg-text-muted sm:block" />
-          <span>6 Chapter Cities</span>
+          <span>Based In Lucknow</span>
           <span className="hidden h-1 w-1 rounded-full bg-text-muted sm:block" />
-          <span>Reply within 48 hours</span>
+          <span>We read every message</span>
         </div>
       </div>
     </section>

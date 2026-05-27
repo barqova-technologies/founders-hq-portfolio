@@ -4,12 +4,21 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitText from "@/components/ui/SplitText";
+import { prefersReducedMotion } from "@/lib/motion";
 
 export default function EcosystemHero() {
   const root = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (!root.current) return;
+    if (prefersReducedMotion()) {
+      gsap.set(root.current.querySelectorAll("[data-split-char]"), {
+        opacity: 1,
+        y: 0,
+        rotateX: 0,
+      });
+      return;
+    }
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       gsap.set(root.current!.querySelectorAll("[data-split-char]"), {
@@ -86,7 +95,7 @@ export default function EcosystemHero() {
           data-eco-sub
           className="mt-8 max-w-2xl text-base leading-relaxed text-text-muted md:text-lg"
         >
-          The HQ runs on six tightly connected things — cohorts, meetups, a
+          The HQ runs on six tightly connected things - cohorts, meetups, a
           mentor network, demo days, studios and private forums. Each one is
           designed to feed the next.
         </p>
@@ -95,11 +104,11 @@ export default function EcosystemHero() {
           data-eco-meta
           className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-4 text-xs uppercase tracking-[0.3em] text-text-muted"
         >
-          <span>1,200+ Founders</span>
+          <span>Six Programs</span>
           <span className="hidden h-1 w-1 rounded-full bg-text-muted sm:block" />
-          <span>200+ Mentors</span>
+          <span>Cohort 01 Forming</span>
           <span className="hidden h-1 w-1 rounded-full bg-text-muted sm:block" />
-          <span>60+ Capital Partners</span>
+          <span>Based In Lucknow</span>
         </div>
       </div>
     </section>

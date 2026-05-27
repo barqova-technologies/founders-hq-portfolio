@@ -3,7 +3,8 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { TIMELINE } from "@/lib/data";
+import { prefersReducedMotion } from "@/lib/motion";
+import { ROADMAP } from "@/lib/data";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 export default function Timeline() {
@@ -11,6 +12,7 @@ export default function Timeline() {
 
   useEffect(() => {
     if (!root.current) return;
+    if (prefersReducedMotion()) return;
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
@@ -55,15 +57,15 @@ export default function Timeline() {
     <section className="section-pad relative">
       <div className="container-x">
         <SectionHeading
-          eyebrow="Our Trajectory"
-          title="Twelve years. One slow, deliberate climb."
-          subtitle="We didn't blow up. We built up — show by show, city by city, mistake by mistake."
+          eyebrow="The Roadmap"
+          title="Where we're headed."
+          subtitle="We're starting today, not pretending we've been here for years. Here's the plan, in the open."
         />
 
         <div ref={root} className="relative mt-20 grid gap-16 lg:grid-cols-12">
           <svg
             aria-hidden
-            className="absolute left-[1.65rem] top-2 hidden h-full w-px lg:block"
+            className="absolute left-[1.65rem] top-2 hidden h-full w-px text-ink lg:block"
             preserveAspectRatio="none"
             viewBox="0 0 2 1000"
             style={{ height: "calc(100% - 4rem)" }}
@@ -71,14 +73,14 @@ export default function Timeline() {
             <path
               data-timeline-path
               d="M1 0 L1 1000"
-              stroke="#0A0A0A"
+              stroke="currentColor"
               strokeWidth="2"
               fill="none"
             />
           </svg>
 
           <ol className="lg:col-span-12 lg:pl-20">
-            {TIMELINE.map((item) => (
+            {ROADMAP.map((item) => (
               <li
                 key={item.year}
                 data-tl-item

@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "@/lib/motion";
 import {
   Building2,
   HeartHandshake,
@@ -30,6 +31,7 @@ export default function PillarsGrid() {
 
   useEffect(() => {
     if (!root.current) return;
+    if (prefersReducedMotion()) return;
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       gsap.from("[data-pillar-card]", {

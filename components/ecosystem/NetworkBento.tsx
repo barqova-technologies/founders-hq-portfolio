@@ -3,38 +3,39 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "@/lib/motion";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 const tiles = [
   {
-    label: "Founders",
-    value: "1,200+",
-    body: "Active in private channels, peer cohorts and city chapters.",
+    label: "Founding Cohort",
+    value: "Cohort 01",
+    body: "Now forming - a small founding batch, kept deliberately tight.",
     span: "lg:col-span-7 lg:row-span-2",
     big: true,
   },
   {
     label: "Mentors",
-    value: "200+",
+    value: "Hand-picked",
     body: "Operators, founders and investors. Vetted, not crowd-sourced.",
     span: "lg:col-span-5",
   },
   {
-    label: "Capital Network",
-    value: "60+ Funds",
-    body: "From pre-seed angels to growth, plus partner CVCs.",
+    label: "Capital",
+    value: "Curated room",
+    body: "We're assembling the angels and funds closest to UP.",
     span: "lg:col-span-5",
   },
   {
-    label: "Cities",
-    value: "6 Chapters",
-    body: "Hyderabad · Bengaluru · Mumbai · Delhi · Pune · Chennai.",
+    label: "Base",
+    value: "Lucknow",
+    body: "Starting in Lucknow, built for founders across Uttar Pradesh.",
     span: "lg:col-span-7",
   },
   {
     label: "Programs",
-    value: "30+ / month",
-    body: "Curated meetups, dinners, deep-dives and demo sessions.",
+    value: "Six, connected",
+    body: "Cohort, meetups, mentors, demo day, studio and forums.",
     span: "lg:col-span-5",
   },
 ];
@@ -44,6 +45,7 @@ export default function NetworkBento() {
 
   useEffect(() => {
     if (!root.current) return;
+    if (prefersReducedMotion()) return;
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       gsap.from("[data-bento]", {
@@ -67,8 +69,8 @@ export default function NetworkBento() {
       <div className="container-x">
         <SectionHeading
           eyebrow="The Network"
-          title="What's actually inside the HQ."
-          subtitle="A snapshot of the four moving parts that make the community work."
+          title="What we're building."
+          subtitle="The moving parts we're standing up to make the community work - honestly, from day one."
         />
 
         <div className="mt-14 grid gap-5 lg:grid-cols-12 lg:auto-rows-[180px]">
@@ -84,8 +86,8 @@ export default function NetworkBento() {
               </p>
               <div className="space-y-2">
                 <p
-                  className={`font-display font-bold leading-none text-ink ${
-                    t.big ? "text-7xl md:text-8xl" : "text-5xl md:text-6xl"
+                  className={`font-display font-bold leading-[1.05] text-ink ${
+                    t.big ? "text-4xl md:text-6xl" : "text-3xl md:text-4xl"
                   }`}
                 >
                   {t.value}

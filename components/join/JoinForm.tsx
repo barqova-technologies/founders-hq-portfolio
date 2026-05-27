@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight, Check } from "lucide-react";
+import { SITE } from "@/lib/data";
 
 const reasons = [
   "I'm applying to a cohort",
@@ -22,9 +23,15 @@ const stages = [
   "Not a founder",
 ];
 
-export default function ContactForm() {
+// Set this to your form endpoint (e.g. a Formspree form URL: https://formspree.io/f/xxxxxxx).
+const FORM_ENDPOINT = process.env.NEXT_PUBLIC_FORM_ENDPOINT;
+
+type Status = "idle" | "submitting" | "success" | "error";
+
+export default function JoinForm() {
   const root = useRef<HTMLFormElement | null>(null);
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (!root.current) return;
@@ -46,10 +53,47 @@ export default function ContactForm() {
     return () => ctx.revert();
   }, []);
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    const form = e.currentTarget;
+
+    if (!FORM_ENDPOINT) {
+      setStatus("error");
+      setError(
+        "The form isn't connected yet. Set NEXT_PUBLIC_FORM_ENDPOINT, or email us directly."
+      );
+      return;
+    }
+
+    setStatus("submitting");
+    setError("");
+
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        form.reset();
+      } else {
+        const data = await res.json().catch(() => null);
+        setStatus("error");
+        setError(
+          data?.errors?.[0]?.message ??
+            "Something went wrong. Try again, or email us directly."
+        );
+      }
+    } catch {
+      setStatus("error");
+      setError("Network error. Try again, or email us directly.");
+    }
   };
+
+  const submitting = status === "submitting";
+  const succeeded = status === "success";
 
   return (
     <form
@@ -61,18 +105,35 @@ export default function ContactForm() {
         Join the Community
       </div>
 
+      {/* Honeypot - hidden from users, catches bots */}
+      <input
+        type="text"
+        name="_gotcha"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="hidden"
+      />
+      <input
+        type="hidden"
+        name="_subject"
+        value="New Founder's HQ application"
+      />
+
       <div data-field className="grid gap-6 md:grid-cols-2">
         <Field label="Your name">
           <input
             required
+            name="name"
             type="text"
-            placeholder="Maya Krishnan"
+            placeholder="Your full name"
             className="form-input"
           />
         </Field>
         <Field label="Email">
           <input
             required
+            name="email"
             type="email"
             placeholder="you@startup.com"
             className="form-input"
@@ -83,13 +144,14 @@ export default function ContactForm() {
       <div data-field className="grid gap-6 md:grid-cols-2">
         <Field label="Company / startup">
           <input
+            name="company"
             type="text"
             placeholder="Optional"
             className="form-input"
           />
         </Field>
         <Field label="Why are you reaching out?">
-          <select required className="form-input bg-primary">
+          <select required name="reason" className="form-input bg-primary">
             <option value="">Pick the closest match</option>
             {reasons.map((r) => (
               <option key={r} value={r}>
@@ -102,7 +164,7 @@ export default function ContactForm() {
 
       <div data-field>
         <Field label="Stage (if applicable)">
-          <select className="form-input bg-primary">
+          <select name="stage" className="form-input bg-primary">
             <option value="">Optional</option>
             {stages.map((s) => (
               <option key={s} value={s}>
@@ -117,6 +179,7 @@ export default function ContactForm() {
         <Field label="Tell us more">
           <textarea
             required
+            name="message"
             rows={6}
             placeholder="What you're building, what you're looking for, or whatever you'd say if we were at the same dinner table."
             className="form-input resize-none"
@@ -124,19 +187,34 @@ export default function ContactForm() {
         </Field>
       </div>
 
+      {error && (
+        <p
+          data-field
+          role="alert"
+          className="rounded-2xl border border-line bg-surface px-4 py-3 text-sm text-ink"
+        >
+          {error}{" "}
+          <a href={`mailto:${SITE.email}`} className="underline">
+            {SITE.email}
+          </a>
+        </p>
+      )}
+
       <div data-field className="flex flex-col items-start gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-xs text-text-muted">
           We read every message. Usually reply within 48 hours.
         </p>
         <button
           type="submit"
-          disabled={submitted}
+          disabled={submitting || succeeded}
           className="group inline-flex items-center gap-3 rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-primary shadow-[0_10px_30px_-10px_rgba(0,0,0,0.4)] transition-transform hover:-translate-y-0.5 disabled:opacity-70"
         >
-          {submitted ? (
+          {succeeded ? (
             <>
               Application received <Check size={16} />
             </>
+          ) : submitting ? (
+            <>Sending&hellip;</>
           ) : (
             <>
               Send Application
@@ -149,11 +227,11 @@ export default function ContactForm() {
       <style jsx>{`
         .form-input {
           width: 100%;
-          background: #fafafa;
-          border: 1px solid #e5e5e5;
+          background: rgb(var(--surface));
+          border: 1px solid rgb(var(--line));
           border-radius: 14px;
           padding: 14px 18px;
-          color: #0a0a0a;
+          color: rgb(var(--text));
           font-family: inherit;
           font-size: 0.95rem;
           transition:
@@ -162,13 +240,13 @@ export default function ContactForm() {
             box-shadow 0.3s ease;
         }
         .form-input::placeholder {
-          color: #a0a0a0;
+          color: rgb(var(--text-muted));
         }
         .form-input:focus {
           outline: none;
-          border-color: #0a0a0a;
-          background: #ffffff;
-          box-shadow: 0 0 0 4px rgba(10, 10, 10, 0.06);
+          border-color: rgb(var(--ink));
+          background: rgb(var(--primary));
+          box-shadow: 0 0 0 4px rgb(var(--ink) / 0.08);
         }
       `}</style>
     </form>

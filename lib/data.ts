@@ -1,17 +1,23 @@
 export const SITE = {
   name: "Founder's HQ",
   short: "FHQ",
+  // Canonical site URL - set NEXT_PUBLIC_SITE_URL in production.
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://foundershq.in",
   tagline: "Where founders find their people.",
   manifesto:
-    "Founder's HQ is a working community of operators, builders and outliers — a place where conviction gets stress-tested, capital gets close, and the next ten years of Indian startups get written in private rooms before they show up on Twitter.",
+    "Founder's HQ is a new working community for the people building from Lucknow and across Uttar Pradesh - a small room where conviction gets stress-tested, the right introductions happen early, and the next wave of UP startups gets built before anyone's posting about it. We're starting with one cohort and one rule: keep the room small, keep it honest.",
+  // Contact - replace with real values before launch.
   email: "hello@foundershq.in",
-  phone: "+91 98765 43210",
-  address: "Founder's HQ, HITEC City, Hyderabad — and 6 chapter cities across India",
+  // Leave empty to hide. Fill with a real number before launch.
+  phone: "",
+  city: "Lucknow",
+  address: "Founder's HQ · Lucknow, Uttar Pradesh, India",
+  // Leave a handle empty to hide its icon. Fill with real profile URLs.
   socials: {
-    linkedin: "https://linkedin.com",
-    instagram: "https://instagram.com",
-    x: "https://x.com",
-    youtube: "https://youtube.com",
+    linkedin: "",
+    instagram: "",
+    x: "",
+    youtube: "",
   },
 };
 
@@ -42,11 +48,12 @@ export const MARQUEE_WORDS = [
   "COMMITMENT",
 ];
 
-export const STATS = [
-  { value: 1200, suffix: "+", label: "Active Founders" },
-  { value: 84, suffix: "", label: "Portfolio Companies" },
-  { value: 6, suffix: "", label: "Chapter Cities" },
-  { value: 420, suffix: "Cr+", label: "₹ Raised by Alumni" },
+// Honest founding facts - no track record claimed.
+export const FOUNDING_FACTS = [
+  { value: "Cohort 01", label: "Now forming" },
+  { value: "Lucknow", label: "Where we're based" },
+  { value: "2026", label: "Launching" },
+  { value: "Founder-funded", label: "Independent" },
 ];
 
 export type Pillar = {
@@ -69,22 +76,22 @@ export const PILLARS: Pillar[] = [
     slug: "accelerator",
     title: "The Accelerator",
     short:
-      "A 12-week cohort program for early-stage founders building in India.",
+      "A focused cohort program for early-stage founders building from Lucknow and across UP.",
     long:
-      "We run two cohorts a year — 8 to 12 companies per batch, pre-seed to early Series A. The program is curriculum-light and conversation-heavy: weekly office hours, founder dinners, paired mentor sprints, and a closing demo day with 60+ investors in the room.",
+      "Cohort 01 is forming now - a small founding batch, pre-seed to early stage. The program is curriculum-light and conversation-heavy: working sessions, founder dinners, paired mentor time, and a closing showcase. We're keeping the first cohort deliberately small.",
     features: [
-      "12 weeks, in-person + remote",
-      "Pre-seed to early Series A",
-      "Up to ₹50L in cohort capital",
+      "12-week program",
+      "Pre-seed to early stage",
+      "Founding cohort - limited seats",
     ],
     icon: "Rocket",
   },
   {
     slug: "meetups",
     title: "Founder Meetups",
-    short: "Curated, small-room conversations across six cities every month.",
+    short: "Small-room conversations for founders, starting in Lucknow.",
     long:
-      "Most of what matters in a startup happens in private rooms with five other people who get it. We run 30+ meetups a month — peer cohorts, office hours, deep-dive sessions, founder dinners — by category, stage, and city.",
+      "Most of what matters in a startup happens in a room with a few other people who get it. We're starting a regular rhythm of founder meetups in Lucknow - peer sessions, office hours and founder dinners - and growing it with the community, not ahead of it.",
     features: [
       "Stage-matched peer groups",
       "Open community sessions",
@@ -95,13 +102,14 @@ export const PILLARS: Pillar[] = [
   {
     slug: "mentors",
     title: "Mentor Network",
-    short: "200+ operators, founders and investors on call for the community.",
+    short:
+      "A hand-picked bench of operators, founders and investors - curated, not crowd-sourced.",
     long:
-      "Our mentor network is curated, not crowd-sourced — every mentor has either run a company through scale or led an investment cycle. Members get matched on real questions, not coffee chats.",
+      "Our mentors are chosen, not collected - each one has either built a company through scale or led an investment cycle. Members get matched on real questions, not coffee chats. We're building this bench deliberately as the community grows.",
     features: [
-      "200+ vetted operators & investors",
+      "Vetted operators & investors",
       "Question-based matching",
-      "Quarterly review with each cohort",
+      "Hands-on with each cohort",
     ],
     icon: "HeartHandshake",
   },
@@ -109,12 +117,12 @@ export const PILLARS: Pillar[] = [
     slug: "demo-days",
     title: "Demo Days",
     short:
-      "Twice a year, the room every founder wants to pitch in front of.",
+      "The room we're building for founders to pitch the people who matter.",
     long:
-      "Our demo days aren't beauty contests — every cohort founder gets a 6-minute slot, a pre-vetted investor list, and a moderated Q&A. Past demo days have closed term sheets in the same week.",
+      "Demo days won't be beauty contests. Every cohort founder gets a short slot, a curated investor list, and a moderated Q&A. We're assembling the room now - starting with the investors and operators closest to the UP ecosystem.",
     features: [
-      "60+ investors in the room",
-      "Pre-vetted investor matching",
+      "Curated investor room",
+      "Pre-vetted matching",
       "Moderated Q&A and follow-ups",
     ],
     icon: "Mic",
@@ -122,13 +130,13 @@ export const PILLARS: Pillar[] = [
   {
     slug: "studios",
     title: "Studios & Coworking",
-    short: "Free desks for cohort founders. Member plans for the community.",
+    short: "A working space for the cohort. Community plans as we grow.",
     long:
-      "Two open floors in HITEC City — content studio, recording booth, meeting rooms, fast wifi. Cohort founders get desks free for the full 12 weeks; community members get monthly plans starting at ₹5,999.",
+      "A place to actually work - desks, meeting rooms, and a spot to record and ship. Cohort 01 founders get space for the program; community plans will open as the room grows. Based in Lucknow.",
     features: [
-      "Two HITEC City floors",
-      "Content + recording studios",
-      "Free for cohort, plans for community",
+      "Cohort workspace in Lucknow",
+      "Meeting & recording space",
+      "Community plans coming",
     ],
     icon: "Building2",
   },
@@ -137,179 +145,115 @@ export const PILLARS: Pillar[] = [
     title: "Founder Forums",
     short: "Private channels, peer cohorts, and the things you don't post.",
     long:
-      "The unsexy half of community: structured peer-cohort calls, private channels per stage, and a quiet forum where founders ask the questions they don't put on LinkedIn. Vetted, moderated, and small on purpose.",
+      "The unglamorous half of community: peer-group calls, private channels by stage, and a quiet forum for the questions founders don't put on LinkedIn. Vetted, moderated, and small on purpose.",
     features: [
       "Stage-based private channels",
-      "Monthly peer-cohort calls",
+      "Peer-group calls",
       "Strict no-pitch policy",
     ],
     icon: "MessageCircle",
   },
 ];
 
-export type CohortCompany = {
-  name: string;
-  founder: string;
-  category: "AI" | "ClimateTech" | "D2C" | "DevTools" | "B2B SaaS" | "Biotech";
-  cohort: string;
+// The kinds of founders Cohort 01 is built for - not a portfolio (we don't have one yet).
+export type CohortTrack = {
+  category: "AI" | "ClimateTech" | "D2C" | "DevTools" | "B2B SaaS" | "Health";
+  title: string;
   blurb: string;
   gradient: string;
 };
 
-export const COHORT_COMPANIES: CohortCompany[] = [
+export const COHORT_TRACKS: CohortTrack[] = [
   {
-    name: "Voltdrop",
-    founder: "Saurabh Mehta",
-    category: "ClimateTech",
-    cohort: "Cohort 11",
-    blurb: "Battery health analytics for grid-scale storage operators.",
-    gradient: "linear-gradient(135deg,#0A0A0A 0%,#3F3F3F 100%)",
-  },
-  {
-    name: "Threadly",
-    founder: "Aanya Kapoor",
-    category: "D2C",
-    cohort: "Cohort 12",
-    blurb: "Direct-to-consumer textile brand reinventing handlooms for Gen-Z.",
-    gradient: "linear-gradient(135deg,#1A1A1A 0%,#5C5C5C 100%)",
-  },
-  {
-    name: "Layer8",
-    founder: "Rohan Iyer",
-    category: "DevTools",
-    cohort: "Cohort 10",
-    blurb: "Network observability for engineering teams that ship daily.",
-    gradient: "linear-gradient(135deg,#262626 0%,#737373 100%)",
-  },
-  {
-    name: "Sundial",
-    founder: "Maya Pillai",
-    category: "B2B SaaS",
-    cohort: "Cohort 12",
-    blurb: "Revenue intelligence for SMB sales teams in emerging markets.",
-    gradient: "linear-gradient(135deg,#0A0A0A 0%,#525252 100%)",
-  },
-  {
-    name: "Kettle.ai",
-    founder: "Karan Joshi",
     category: "AI",
-    cohort: "Cohort 11",
-    blurb: "Inference infrastructure for fine-tuned domain models.",
+    title: "AI & Applied ML",
+    blurb: "Founders putting models to work on real, unglamorous problems.",
     gradient: "linear-gradient(135deg,#171717 0%,#404040 100%)",
   },
   {
-    name: "ParaLabs",
-    founder: "Priyanka Rao",
-    category: "Biotech",
-    cohort: "Cohort 09",
-    blurb: "Affordable genomics tooling for outpatient diagnostics.",
+    category: "ClimateTech",
+    title: "Climate & Energy",
+    blurb: "Hardware, software and services for a cleaner grid.",
+    gradient: "linear-gradient(135deg,#0A0A0A 0%,#3F3F3F 100%)",
+  },
+  {
+    category: "D2C",
+    title: "Consumer & D2C",
+    blurb: "Brands and products built for the next 500M consumers.",
+    gradient: "linear-gradient(135deg,#1A1A1A 0%,#5C5C5C 100%)",
+  },
+  {
+    category: "DevTools",
+    title: "Developer Tools",
+    blurb: "Infrastructure and tooling for teams that ship daily.",
+    gradient: "linear-gradient(135deg,#262626 0%,#737373 100%)",
+  },
+  {
+    category: "B2B SaaS",
+    title: "B2B SaaS",
+    blurb: "Software that earns its seat in the workflow.",
+    gradient: "linear-gradient(135deg,#0A0A0A 0%,#525252 100%)",
+  },
+  {
+    category: "Health",
+    title: "Health & Bio",
+    blurb: "Affordable, accessible tools for diagnostics and care.",
     gradient: "linear-gradient(135deg,#0F0F0F 0%,#666666 100%)",
   },
 ];
 
-export type Meetup = {
+// Formats we're starting with - not dated events (we haven't run them yet).
+export type MeetupFormat = {
   title: string;
-  city: string;
-  date: string; // human-readable, post-2026-05-01
-  format: "In-person" | "Hybrid" | "Online";
   audience: string;
+  cadence: string;
 };
 
-export const MEETUPS: Meetup[] = [
+export const MEETUP_FORMATS: MeetupFormat[] = [
   {
-    title: "Founder Office Hours — Cohort 13 Open House",
-    city: "Hyderabad",
-    date: "May 18, 2026",
-    format: "In-person",
+    title: "Founder Office Hours",
     audience: "Pre-seed to seed founders",
+    cadence: "Open house · Lucknow",
   },
   {
-    title: "Pricing for B2B SaaS in India",
-    city: "Bengaluru",
-    date: "May 24, 2026",
-    format: "Hybrid",
-    audience: "Founders & GTM leads",
+    title: "Peer Cohort Sessions",
+    audience: "Stage-matched groups",
+    cadence: "Small & recurring",
   },
   {
-    title: "AI Founders Mixer",
-    city: "Mumbai",
-    date: "May 30, 2026",
-    format: "In-person",
-    audience: "AI / ML founders",
+    title: "Founder Dinners",
+    audience: "Founders only",
+    cadence: "Invite-based",
   },
   {
-    title: "Cohort 13 Demo Day",
-    city: "Hyderabad",
-    date: "June 12, 2026",
-    format: "In-person",
-    audience: "Invitation only",
+    title: "Demo / Showcase Day",
+    audience: "Cohort 01 + investors",
+    cadence: "With Cohort 01",
   },
 ];
 
-export const PARTNERS = ["PV", "AT", "BL", "AX", "TE", "ST", "ON", "IE"];
-
-export const TESTIMONIALS = [
-  {
-    quote:
-      "I came in with a deck and three customers. I left the cohort with a hiring plan, a working pricing model, and a term sheet on the table.",
-    name: "Saurabh Mehta",
-    role: "CEO",
-    company: "Voltdrop",
-  },
-  {
-    quote:
-      "It's the first community I've been in where people answer questions instead of repackaging them. Everyone's actually building something.",
-    name: "Aanya Kapoor",
-    role: "Co-founder",
-    company: "Threadly",
-  },
-  {
-    quote:
-      "Our entire seed round came from rooms FHQ put us in. The follow-on came from a peer-cohort intro six months later.",
-    name: "Rohan Iyer",
-    role: "CEO",
-    company: "Layer8",
-  },
-];
-
-export const TIMELINE = [
-  {
-    year: "2018",
-    title: "The First Dinner",
-    body: "Twelve founders meet over coffee in a Hyderabad cafe. The whole thing fits on one table.",
-  },
-  {
-    year: "2019",
-    title: "Cohort 01",
-    body: "Eight startups join the first formal cohort. Two are still alive — both are now in the alumni network.",
-  },
-  {
-    year: "2021",
-    title: "Pivot To Chapters",
-    body: "We open in Bengaluru, Mumbai and Delhi. 200+ founders in the network by year-end.",
-  },
-  {
-    year: "2022",
-    title: "Mentor Collective",
-    body: "200+ operators, founders and investors join the mentor collective. Matching gets structured.",
-  },
-  {
-    year: "2024",
-    title: "Studios & Coworking",
-    body: "Two HITEC City floors open. Cohort founders move in for free; community plans launch.",
-  },
+// Forward-looking roadmap - clearly the plan, not claimed history.
+export const ROADMAP = [
   {
     year: "2026",
-    title: "1,200 Founders Strong",
-    body: "84 portfolio companies. 12 cohorts. ₹420Cr+ raised by alumni. The community got loud, but the rooms stayed small.",
+    title: "We open the doors",
+    body: "Founder's HQ launches in Lucknow. Cohort 01 applications open and the first founder meetups begin.",
   },
-];
-
-export const TEAM = [
-  { name: "Maya Krishnan", role: "Founder", gradient: "linear-gradient(135deg,#0A0A0A,#5C5C5C)" },
-  { name: "Rohan Mathew", role: "Programs Lead", gradient: "linear-gradient(135deg,#1A1A1A,#737373)" },
-  { name: "Aisha Rao", role: "Community Lead", gradient: "linear-gradient(135deg,#262626,#888888)" },
-  { name: "Vivek Kapoor", role: "Investor Relations", gradient: "linear-gradient(135deg,#0F0F0F,#4A4A4A)" },
+  {
+    year: "2026 · H2",
+    title: "First showcase",
+    body: "Cohort 01 runs its program and closes with our first demo day in front of a curated investor room.",
+  },
+  {
+    year: "2027",
+    title: "The bench grows",
+    body: "Cohort 02 opens, the mentor network deepens, and community plans for the Lucknow workspace go live.",
+  },
+  {
+    year: "Beyond",
+    title: "Built in the open",
+    body: "We grow the community with its members - more rooms, more cities across UP - and keep every cohort small on purpose.",
+  },
 ];
 
 export const VALUES = [

@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "@/lib/motion";
 import { MARQUEE_WORDS } from "@/lib/data";
 
 export default function MarqueeStrip() {
@@ -14,6 +15,7 @@ export default function MarqueeStrip() {
     const track = trackRef.current;
     const track2 = trackRef2.current;
     if (!track || !track2) return;
+    if (prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
       const half = track.scrollWidth / 2;

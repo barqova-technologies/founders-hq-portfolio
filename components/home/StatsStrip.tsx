@@ -3,14 +3,15 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import AnimatedCounter from "@/components/ui/AnimatedCounter";
-import { STATS } from "@/lib/data";
+import { prefersReducedMotion } from "@/lib/motion";
+import { FOUNDING_FACTS } from "@/lib/data";
 
 export default function StatsStrip() {
   const root = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (!root.current) return;
+    if (prefersReducedMotion()) return;
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       gsap.from("[data-stat]", {
@@ -35,7 +36,7 @@ export default function StatsStrip() {
       className="relative border-y border-line bg-primary py-16 md:py-20"
     >
       <div className="container-x grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-        {STATS.map((s, i) => (
+        {FOUNDING_FACTS.map((s, i) => (
           <div
             key={s.label}
             data-stat
@@ -46,8 +47,8 @@ export default function StatsStrip() {
             <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-text-muted">
               {String(i + 1).padStart(2, "0")}
             </span>
-            <div className="font-display text-4xl font-bold leading-none text-ink md:text-5xl lg:text-6xl">
-              <AnimatedCounter end={s.value} suffix={s.suffix} />
+            <div className="font-display text-3xl font-bold leading-none text-ink md:text-4xl lg:text-5xl">
+              {s.value}
             </div>
             <p className="text-sm text-text-muted">{s.label}</p>
           </div>

@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "@/lib/motion";
 import {
   Coffee,
   HeartHandshake,
@@ -17,17 +18,17 @@ const BENEFITS = [
   {
     icon: Rocket,
     title: "Cohort Access",
-    body: "Stage-matched cohorts of 6–12 founders. The shortest version of a peer group that actually works.",
+    body: "A founding cohort of 6–12 founders. The shortest version of a peer group that actually works.",
   },
   {
     icon: HeartHandshake,
     title: "Mentor Matching",
-    body: "200+ vetted operators and investors. Matched on real questions, not coffee chats.",
+    body: "A hand-picked bench of operators and investors. Matched on real questions, not coffee chats.",
   },
   {
     icon: Mic,
     title: "Demo Days",
-    body: "Twice-yearly invite-only rooms with 60+ funds. Six-minute slot, moderated Q&A.",
+    body: "An invite-only room with a curated set of investors. Short slot, moderated Q&A.",
   },
   {
     icon: MessageCircle,
@@ -37,12 +38,12 @@ const BENEFITS = [
   {
     icon: Coffee,
     title: "Founder Dinners",
-    body: "Small, frequent, in six cities. The work happens in private rooms, on purpose.",
+    body: "Small and frequent, in Lucknow. The work happens in private rooms, on purpose.",
   },
   {
     icon: Building2,
     title: "Studios & Coworking",
-    body: "Two HITEC City floors. Free desks for cohort founders, monthly plans for the community.",
+    body: "A working space in Lucknow - desks for cohort founders, community plans as we grow.",
   },
 ];
 
@@ -51,6 +52,7 @@ export default function BenefitsList() {
 
   useEffect(() => {
     if (!root.current) return;
+    if (prefersReducedMotion()) return;
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       gsap.from("[data-benefit]", {

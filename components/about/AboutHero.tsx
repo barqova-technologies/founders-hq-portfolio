@@ -4,12 +4,21 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitText from "@/components/ui/SplitText";
+import { prefersReducedMotion } from "@/lib/motion";
 
 export default function AboutHero() {
   const root = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (!root.current) return;
+    if (prefersReducedMotion()) {
+      gsap.set(root.current.querySelectorAll("[data-split-char]"), {
+        opacity: 1,
+        y: 0,
+        rotateX: 0,
+      });
+      return;
+    }
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       gsap.set(root.current!.querySelectorAll("[data-split-char]"), {
@@ -79,26 +88,26 @@ export default function AboutHero() {
           <span className="h-px w-10 bg-ink" /> About
         </p>
         <h1 className="font-display text-display font-bold text-ink">
-          <SplitText text="It started as" as="span" className="block" />
-          <SplitText text="a dinner." as="span" className="block brand-gradient-text" />
+          <SplitText text="It starts with" as="span" className="block" />
+          <SplitText text="a room." as="span" className="block brand-gradient-text" />
         </h1>
         <p
           data-about-sub
           className="mt-8 max-w-2xl text-base leading-relaxed text-text-muted md:text-lg"
         >
-          Twelve founders. One long table. A bottle of cheap red. Eight years
-          later it&rsquo;s a community of 1,200 across six cities — but the
-          rooms are still small, the rules are still simple, and the dinners
-          still happen on Tuesdays.
+          One table, a few founders who get it, and a simple idea: the work that
+          matters happens in small rooms before it shows up anywhere else.
+          We&rsquo;re starting that room in Lucknow - and we&rsquo;d rather build
+          it honestly than pretend we&rsquo;ve been here for years.
         </p>
 
         <div
           data-about-meta
           className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-4 text-xs uppercase tracking-[0.3em] text-text-muted"
         >
-          <span>Founded 2018</span>
+          <span>Launching 2026</span>
           <span className="hidden h-1 w-1 rounded-full bg-text-muted sm:block" />
-          <span>Hyderabad, India</span>
+          <span>Lucknow, India</span>
           <span className="hidden h-1 w-1 rounded-full bg-text-muted sm:block" />
           <span>Independent &amp; founder-funded</span>
         </div>

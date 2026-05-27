@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "@/lib/motion";
 import { ArrowRight } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { PILLARS } from "@/lib/data";
@@ -21,6 +22,11 @@ export default function ProgramsDetail() {
 
   useEffect(() => {
     if (!root.current) return;
+    if (prefersReducedMotion()) {
+      gsap.set("[data-program-img]", { opacity: 1, x: 0, clipPath: "none" });
+      gsap.set("[data-program-text] > *", { opacity: 1, x: 0 });
+      return;
+    }
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       const blocks =

@@ -26,8 +26,8 @@ export default function Footer() {
               </span>
             </Link>
             <p className="mt-6 max-w-md text-base leading-relaxed text-text-muted">
-              {SITE.tagline} A working community of operators, builders and
-              outliers across six Indian cities.
+              {SITE.tagline} A new working community of operators, builders and
+              outliers - starting in Lucknow.
             </p>
             <Link
               href="/join"
@@ -80,11 +80,16 @@ export default function Footer() {
                     {SITE.email}
                   </a>
                 </p>
-                <p>
-                  <a href={`tel:${SITE.phone.replace(/\s+/g, "")}`} className="hover:text-ink">
-                    {SITE.phone}
-                  </a>
-                </p>
+                {SITE.phone && (
+                  <p>
+                    <a
+                      href={`tel:${SITE.phone.replace(/\s+/g, "")}`}
+                      className="hover:text-ink"
+                    >
+                      {SITE.phone}
+                    </a>
+                  </p>
+                )}
               </address>
             </div>
           </div>
@@ -94,24 +99,40 @@ export default function Footer() {
           <p className="text-xs text-text-muted">
             &copy; 2026 Founder&rsquo;s HQ. Built quietly. Shared loudly.
           </p>
+          <nav className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-text-muted">
+            <Link href="/legal/terms" className="hover:text-ink">
+              Terms
+            </Link>
+            <Link href="/legal/privacy" className="hover:text-ink">
+              Privacy
+            </Link>
+            <Link href="/legal/refunds" className="hover:text-ink">
+              Refunds
+            </Link>
+            <Link href="/contact" className="hover:text-ink">
+              Contact
+            </Link>
+          </nav>
           <div className="flex items-center gap-3">
             {[
               { Icon: Linkedin, href: SITE.socials.linkedin, label: "LinkedIn" },
               { Icon: Instagram, href: SITE.socials.instagram, label: "Instagram" },
               { Icon: Twitter, href: SITE.socials.x, label: "X" },
               { Icon: Youtube, href: SITE.socials.youtube, label: "YouTube" },
-            ].map(({ Icon, href, label }) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-primary text-text-muted transition-colors hover:border-ink hover:text-ink"
-              >
-                <Icon size={16} />
-              </a>
-            ))}
+            ]
+              .filter(({ href }) => href)
+              .map(({ Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-primary text-text-muted transition-colors hover:border-ink hover:text-ink"
+                >
+                  <Icon size={16} />
+                </a>
+              ))}
           </div>
         </div>
       </div>

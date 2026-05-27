@@ -5,7 +5,7 @@ import JoinForm from "@/components/join/JoinForm";
 import ApplicationSteps from "@/components/join/ApplicationSteps";
 
 export const metadata: Metadata = {
-  title: "Join Us — Founder's HQ",
+  title: "Join Us",
   description:
     "Apply to a cohort, RSVP for a meetup, sign up to mentor, or just say hi. We read every message and reply within 48 hours.",
 };
@@ -27,7 +27,7 @@ export default function JoinPage() {
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-text-muted md:text-lg">
               Tell us a little about you and what you&rsquo;re after. The form
-              doubles as the cohort application — there&rsquo;s no second one.
+              doubles as the cohort application - there&rsquo;s no second one.
             </p>
           </div>
 

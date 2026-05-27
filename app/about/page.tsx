@@ -4,14 +4,13 @@ import { ArrowUpRight } from "lucide-react";
 import AboutHero from "@/components/about/AboutHero";
 import OriginStory from "@/components/about/OriginStory";
 import Timeline from "@/components/about/Timeline";
-import TeamSection from "@/components/about/TeamSection";
 import ValuesGrid from "@/components/about/ValuesGrid";
 import MagneticButton from "@/components/ui/MagneticButton";
 
 export const metadata: Metadata = {
-  title: "About — Founder's HQ",
+  title: "About",
   description:
-    "How Founder's HQ began, who runs it, and the four working rules we keep coming back to.",
+    "Why we're starting Founder's HQ in Lucknow, the roadmap ahead, and the four working rules we build against.",
 };
 
 export default function AboutPage() {
@@ -20,7 +19,6 @@ export default function AboutPage() {
       <AboutHero />
       <OriginStory />
       <Timeline />
-      <TeamSection />
       <ValuesGrid />
 
       <section className="section-pad">
@@ -34,8 +32,8 @@ export default function AboutPage() {
               <span className="brand-gradient-text">the ecosystem.</span>
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-text-muted">
-              The community runs on six programs, six chapter cities, a 200+
-              mentor network and 60+ capital partners. Take a closer look.
+              Six connected programs, one founding cohort, and a community
+              we&rsquo;re building in the open. Take a closer look.
             </p>
             <div className="mt-10 inline-block">
               <Link href="/ecosystem">

@@ -4,15 +4,17 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight, MapPin, Calendar } from "lucide-react";
+import { prefersReducedMotion } from "@/lib/motion";
+import { ArrowUpRight, Users, Repeat } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { MEETUPS } from "@/lib/data";
+import { MEETUP_FORMATS } from "@/lib/data";
 
 export default function Meetups() {
   const root = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!root.current) return;
+    if (prefersReducedMotion()) return;
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       gsap.from("[data-meetup-row]", {
@@ -36,9 +38,9 @@ export default function Meetups() {
       <div className="container-x">
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
           <SectionHeading
-            eyebrow="Upcoming In The HQ"
-            title="The next four rooms worth being in."
-            subtitle="A small slice of what's on the calendar this month across our chapter cities."
+            eyebrow="The First Rooms"
+            title="What we're starting with in Lucknow."
+            subtitle="The formats we're opening with. RSVP and we'll tell you the moment dates are set."
           />
           <Link
             href="/join"
@@ -50,7 +52,7 @@ export default function Meetups() {
         </div>
 
         <ul className="mt-14 divide-y divide-line border-y border-line">
-          {MEETUPS.map((m, i) => (
+          {MEETUP_FORMATS.map((m, i) => (
             <li
               key={m.title}
               data-meetup-row
@@ -63,25 +65,15 @@ export default function Meetups() {
                 <h3 className="font-display text-xl font-semibold leading-snug text-ink md:text-2xl">
                   {m.title}
                 </h3>
-                <p className="mt-1 text-sm text-text-muted">{m.audience}</p>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-text-muted sm:col-span-3">
+                <Users size={14} className="text-ink" />
+                {m.audience}
               </div>
               <div className="flex items-center gap-2 text-sm text-text-muted sm:col-span-2">
-                <Calendar size={14} className="text-ink" />
-                {m.date}
+                <Repeat size={14} className="text-ink" />
+                {m.cadence}
               </div>
-              <div className="flex items-center gap-2 text-sm text-text-muted sm:col-span-2">
-                <MapPin size={14} className="text-ink" />
-                {m.city}
-                <span className="ml-1 inline-flex items-center rounded-full border border-line bg-primary px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-text-muted">
-                  {m.format}
-                </span>
-              </div>
-              <span className="hidden justify-end sm:col-span-1 sm:flex">
-                <ArrowUpRight
-                  size={18}
-                  className="text-text-muted transition-all duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink"
-                />
-              </span>
             </li>
           ))}
         </ul>

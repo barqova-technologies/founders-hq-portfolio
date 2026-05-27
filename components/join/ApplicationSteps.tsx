@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "@/lib/motion";
 import { Send, MailOpen, Phone, KeyRound } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 
@@ -11,7 +12,7 @@ const STEPS = [
     icon: Send,
     label: "Step 01",
     title: "You hit send",
-    body: "Application, RSVP, mentor sign-up — any reason works. One form.",
+    body: "Application, RSVP, mentor sign-up - any reason works. One form.",
     when: "0 days",
   },
   {
@@ -32,7 +33,7 @@ const STEPS = [
     icon: KeyRound,
     label: "Step 04",
     title: "Welcome to the room",
-    body: "Channels, dinners, mentor intros — and a calendar invite to your first meetup.",
+    body: "Channels, dinners, mentor intros - and a calendar invite to your first meetup.",
     when: "Day one",
   },
 ];
@@ -42,6 +43,7 @@ export default function ApplicationSteps() {
 
   useEffect(() => {
     if (!root.current) return;
+    if (prefersReducedMotion()) return;
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
@@ -93,7 +95,7 @@ export default function ApplicationSteps() {
           {/* Desktop: horizontal connecting line */}
           <svg
             aria-hidden
-            className="absolute left-[8%] right-[8%] top-[3.25rem] hidden h-px lg:block"
+            className="absolute left-[8%] right-[8%] top-[1.625rem] hidden h-px text-ink lg:block"
             viewBox="0 0 1000 2"
             preserveAspectRatio="none"
             style={{ width: "84%" }}
@@ -101,7 +103,7 @@ export default function ApplicationSteps() {
             <path
               data-steps-path
               d="M0 1 L1000 1"
-              stroke="#0A0A0A"
+              stroke="currentColor"
               strokeWidth="1.5"
               fill="none"
             />

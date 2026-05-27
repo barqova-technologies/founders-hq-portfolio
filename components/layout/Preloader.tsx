@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { prefersReducedMotion } from "@/lib/motion";
 
 const STORAGE_KEY = "fhq:preloader-shown";
 const LETTERS = ["F", "O", "U", "N", "D", "E", "R", "S", " ", "H", "Q"];
@@ -13,6 +14,12 @@ export default function Preloader() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (sessionStorage.getItem(STORAGE_KEY)) {
+      setShouldShow(false);
+      return;
+    }
+
+    if (prefersReducedMotion()) {
+      sessionStorage.setItem(STORAGE_KEY, "1");
       setShouldShow(false);
       return;
     }

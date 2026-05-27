@@ -9,9 +9,9 @@ import PartnersBlock from "@/components/ecosystem/PartnersBlock";
 import MagneticButton from "@/components/ui/MagneticButton";
 
 export const metadata: Metadata = {
-  title: "Ecosystem — Founder's HQ",
+  title: "Ecosystem",
   description:
-    "Six programs, 1,200+ founders, 84 portfolio companies, 200+ mentors and 60+ capital partners — connected by cohorts, meetups and demo days across six Indian cities.",
+    "Six connected programs - cohorts, meetups, a mentor bench, demo days, studios and private forums - for founders building from Lucknow. Cohort 01 is forming now.",
 };
 
 export default function EcosystemPage() {
@@ -34,8 +34,8 @@ export default function EcosystemPage() {
               <span className="brand-gradient-text">Or come to a meetup.</span>
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-text-muted">
-              Cohort 13 applications close June 06. Meetups run every week. Drop
-              us a line and we&rsquo;ll point you at the right room.
+              Cohort 01 applications are open and the first meetups are coming.
+              Drop us a line and we&rsquo;ll point you at the right room.
             </p>
             <div className="mt-10 inline-block">
               <Link href="/join">

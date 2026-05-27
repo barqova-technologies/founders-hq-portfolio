@@ -8,6 +8,7 @@ import {
   useRef,
 } from "react";
 import gsap from "gsap";
+import { prefersReducedMotion } from "@/lib/motion";
 
 type Variant = "primary" | "ghost" | "inverse";
 
@@ -34,6 +35,7 @@ const MagneticButton = forwardRef<HTMLButtonElement, Props>(
       const el = btnRef.current;
       if (!el) return;
       if (window.matchMedia("(max-width: 1023px)").matches) return;
+      if (prefersReducedMotion()) return;
 
       let mouseX = 0;
       let mouseY = 0;

@@ -2,18 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --primary: #fafafa;
-  --ink: #0a0a0a;
-  --ink-soft: #1a1a1a;
-  --secondary: #0a0a0a;
-  --accent: #1a1a1a;
-  --surface: #f2f2f2;
-  --surface-2: #e8e8e8;
-  --line: #e5e5e5;
-  --text: #0a0a0a;
-  --text-muted: #6b6b6b;
-  --gradient: linear-gradient(135deg, #0a0a0a, #2e2e2e);
+/* Colors are stored as space-separated RGB channels so Tailwind's
+   `/<alpha>` opacity modifiers keep working (rgb(var(--x) / 0.7)). */
+:root,
+[data-theme="light"] {
+  --primary: 250 250 250;
+  --ink: 10 10 10;
+  --ink-soft: 26 26 26;
+  --secondary: 10 10 10;
+  --accent: 26 26 26;
+  --surface: 242 242 242;
+  --surface-2: 232 232 232;
+  --line: 229 229 229;
+  --text: 10 10 10;
+  --text-muted: 107 107 107;
+  --grad-from: 10 10 10;
+  --grad-to: 138 138 138;
+}
+
+[data-theme="dark"] {
+  --primary: 11 11 12;
+  --ink: 245 245 245;
+  --ink-soft: 220 220 220;
+  --secondary: 245 245 245;
+  --accent: 220 220 220;
+  --surface: 22 22 24;
+  --surface-2: 32 32 35;
+  --line: 42 42 46;
+  --text: 245 245 245;
+  --text-muted: 156 156 156;
+  --grad-from: 245 245 245;
+  --grad-to: 138 138 138;
 }
 
 * {
@@ -22,19 +41,22 @@
 
 html {
   scroll-behavior: smooth;
-  background: var(--primary);
+  background: rgb(var(--primary));
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
-  background: var(--primary);
-  color: var(--text);
+  background: rgb(var(--primary));
+  color: rgb(var(--text));
   font-family: var(--font-inter), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 body.no-scroll {
@@ -42,8 +64,8 @@ body.no-scroll {
 }
 
 ::selection {
-  background: var(--ink);
-  color: #fafafa;
+  background: rgb(var(--ink));
+  color: rgb(var(--primary));
 }
 
 ::-webkit-scrollbar {
@@ -51,26 +73,30 @@ body.no-scroll {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #f2f2f2;
+  background: rgb(var(--surface));
 }
 ::-webkit-scrollbar-thumb {
-  background: #0a0a0a;
+  background: rgb(var(--ink));
   border-radius: 999px;
 }
 
 /* Outlined heading utility */
 .text-stroke {
-  -webkit-text-stroke: 1.5px var(--ink);
+  -webkit-text-stroke: 1.5px rgb(var(--ink));
   color: transparent;
 }
 
 .text-stroke-muted {
-  -webkit-text-stroke: 1px var(--text-muted);
+  -webkit-text-stroke: 1px rgb(var(--text-muted));
   color: transparent;
 }
 
 .brand-gradient-text {
-  background: linear-gradient(180deg, #0a0a0a 0%, #8a8a8a 100%);
+  background: linear-gradient(
+    180deg,
+    rgb(var(--grad-from)) 0%,
+    rgb(var(--grad-to)) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -85,7 +111,7 @@ body.no-scroll {
   inset: -1px;
   border-radius: inherit;
   padding: 1px;
-  background: var(--ink);
+  background: rgb(var(--ink));
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
@@ -102,6 +128,30 @@ body.no-scroll {
 /* Section paddings */
 .section-pad {
   padding-block: clamp(4rem, 9vw, 8rem);
+}
+
+/* Legal / policy page prose */
+.legal-prose h2 {
+  @apply mb-3 mt-10 font-display text-2xl font-semibold text-ink;
+}
+.legal-prose h3 {
+  @apply mb-2 mt-6 font-semibold text-ink;
+}
+.legal-prose p {
+  @apply mb-4 leading-relaxed text-text-muted;
+}
+.legal-prose ul {
+  @apply mb-4 space-y-2 pl-5 text-text-muted;
+  list-style: disc;
+}
+.legal-prose li {
+  @apply leading-relaxed;
+}
+.legal-prose a {
+  @apply text-ink underline;
+}
+.legal-prose strong {
+  @apply font-semibold text-ink;
 }
 
 .container-x {
@@ -142,5 +192,13 @@ body.no-scroll {
   *::after {
     animation-duration: 0.001ms !important;
     transition-duration: 0.001ms !important;
+  }
+
+  /* Split-text headings start hidden for the JS reveal animation.
+     If motion is reduced (or JS fails), force them visible. */
+  [data-split-char],
+  [data-split-word] {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { prefersReducedMotion } from "@/lib/motion";
 import SplitText from "@/components/ui/SplitText";
 import MagneticButton from "@/components/ui/MagneticButton";
 import { ROTATING_WORDS, SITE } from "@/lib/data";
@@ -16,6 +17,22 @@ export default function Hero() {
   // Intro timeline + rotating word loop
   useEffect(() => {
     if (!root.current) return;
+
+    if (prefersReducedMotion()) {
+      const r = root.current;
+      gsap.set(r.querySelectorAll("[data-split-char]"), {
+        opacity: 1,
+        y: 0,
+        rotateX: 0,
+      });
+      gsap.set(r.querySelectorAll("[data-eyebrow]"), { opacity: 1, y: 0 });
+      const slots = wordsRef.current?.querySelectorAll<HTMLSpanElement>("[data-rot]");
+      if (slots && slots.length) {
+        gsap.set(slots, { yPercent: 110, opacity: 0 });
+        gsap.set(slots[0], { yPercent: 0, opacity: 1 });
+      }
+      return;
+    }
 
     const ctx = gsap.context(() => {
       gsap.set(root.current!.querySelectorAll("[data-split-char]"), {
@@ -57,7 +74,7 @@ export default function Hero() {
           "-=0.5"
         );
 
-      // Rotating word loop — smooth fade + rise
+      // Rotating word loop - smooth fade + rise
       const slots = wordsRef.current?.querySelectorAll<HTMLSpanElement>("[data-rot]");
       if (slots && slots.length) {
         gsap.set(slots, { yPercent: 110, opacity: 0 });
@@ -97,6 +114,13 @@ export default function Hero() {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+    if (prefersReducedMotion()) return;
+
+    const dotColor = `rgb(${
+      getComputedStyle(document.documentElement)
+        .getPropertyValue("--ink")
+        .trim() || "10 10 10"
+    })`;
 
     let raf = 0;
     let dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -125,12 +149,12 @@ export default function Hero() {
         if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = "#0A0A0A";
+        ctx.fillStyle = dotColor;
         ctx.globalAlpha = 0.4;
         ctx.fill();
       }
       ctx.globalAlpha = 0.07;
-      ctx.strokeStyle = "#0A0A0A";
+      ctx.strokeStyle = dotColor;
       ctx.lineWidth = 0.5 * dpr;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
@@ -191,7 +215,7 @@ export default function Hero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ink opacity-60" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-ink" />
           </span>
-          Cohort 13 applications open &middot; closes Jun 06
+          Cohort 01 applications open &middot; Lucknow
         </div>
 
         <div className="font-display text-display font-bold text-ink">
@@ -228,9 +252,9 @@ export default function Hero() {
           data-hero-sub
           className="max-w-2xl text-base leading-relaxed text-text-muted md:text-lg"
         >
-          {SITE.tagline} A working community of operators, builders and
-          outliers — running cohorts, meetups and a 200+ mentor network across
-          six Indian cities.
+          {SITE.tagline} A new working community of operators, builders and
+          outliers - starting in Lucknow with one founding cohort, regular
+          meetups and a hand-picked mentor bench.
         </p>
 
         <div className="flex flex-wrap items-center gap-4">
@@ -252,11 +276,11 @@ export default function Hero() {
           data-hero-meta
           className="mt-6 flex flex-wrap items-center gap-x-10 gap-y-4 text-xs uppercase tracking-[0.3em] text-text-muted"
         >
-          <span>1,200+ Founders</span>
+          <span>Founding Cohort Forming</span>
           <span className="hidden h-1 w-1 rounded-full bg-text-muted sm:block" />
-          <span>84 Portfolio Companies</span>
+          <span>Based In Lucknow</span>
           <span className="hidden h-1 w-1 rounded-full bg-text-muted sm:block" />
-          <span>6 Chapter Cities</span>
+          <span>Built For UP Founders</span>
         </div>
       </div>
 

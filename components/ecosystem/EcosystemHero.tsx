@@ -89,7 +89,12 @@ export default function EcosystemHero() {
         </p>
         <h1 className="font-display text-display font-bold text-ink">
           <SplitText text="Six programs." as="span" className="block" />
-          <SplitText text="One operating system." as="span" className="block brand-gradient-text" />
+          <SplitText
+            text="One operating system."
+            as="span"
+            className="block"
+            charClassName="brand-gradient-text"
+          />
         </h1>
         <p
           data-eco-sub

@@ -13,8 +13,8 @@ export default function ContactPage() {
     <LegalLayout title="Contact" updated="27 May 2026">
       <p>
         We read every message and usually reply within 48 hours. The fastest way
-        to reach us is the form on the <Link href="/join">Join</Link> page - it
-        doubles as the cohort application.
+        to reach us is the form on the <Link href="/join">Join</Link> page -
+        whether you want to mentor, partner, or join the Cohort 01 waitlist.
       </p>
 
       <h2>Email</h2>
@@ -36,8 +36,8 @@ export default function ContactPage() {
 
       <h2>Operated by</h2>
       <p>
-        [Legal entity name], [entity type] - registered at {SITE.address}. GSTIN:
-        [if registered].
+        Infinity Ventures, a sole proprietorship - registered at {SITE.address}.
+        GSTIN: 09EKCPM2387E1Z0.
       </p>
     </LegalLayout>
   );

@@ -87,7 +87,7 @@ export default function FoundingNote() {
           </p>
           <Link href="/join" className="inline-block">
             <span className="group inline-flex items-center gap-3 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-ink transition-transform hover:-translate-y-0.5">
-              Apply to Cohort 01
+              Become a mentor
               <ArrowUpRight size={16} className="transition-transform group-hover:rotate-45" />
             </span>
           </Link>

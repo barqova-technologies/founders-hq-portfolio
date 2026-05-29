@@ -7,7 +7,7 @@ import ApplicationSteps from "@/components/join/ApplicationSteps";
 export const metadata: Metadata = {
   title: "Join Us",
   description:
-    "Apply to a cohort, RSVP for a meetup, sign up to mentor, or just say hi. We read every message and reply within 48 hours.",
+    "Mentor a founder, partner with us, attend a meetup, or join the Cohort 01 waitlist. We read every message and reply within 48 hours.",
 };
 
 export default function JoinPage() {
@@ -20,14 +20,15 @@ export default function JoinPage() {
         <div className="container-x">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-5 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.4em] text-ink">
-              <span className="h-px w-10 bg-ink" /> Send Application
+              <span className="h-px w-10 bg-ink" /> Send a Note
             </p>
             <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-ink md:text-5xl lg:text-6xl">
               One form. <span className="brand-gradient-text">Any reason.</span>
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-text-muted md:text-lg">
-              Tell us a little about you and what you&rsquo;re after. The form
-              doubles as the cohort application - there&rsquo;s no second one.
+              Tell us a little about you and what you&rsquo;re after - mentor,
+              partner, or future founder. The same form holds the Cohort 01
+              waitlist, so there&rsquo;s no second one.
             </p>
           </div>
 

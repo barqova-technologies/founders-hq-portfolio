@@ -26,7 +26,7 @@ export default function RefundsPage() {
       <h2>2. Cancellation by you</h2>
       <ul>
         <li>
-          <strong>Within [7] days of payment</strong> and before the cohort,
+          <strong>Within 7 days of payment</strong> and before the cohort,
           membership or plan begins: eligible for a full refund, less any
           payment-gateway charges where applicable.
         </li>
@@ -48,14 +48,14 @@ export default function RefundsPage() {
       <h2>4. How to request a refund</h2>
       <p>
         Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> with your name,
-        the payment reference and the reason. We aim to respond within [5]
+        the payment reference and the reason. We aim to respond within 5
         business days.
       </p>
 
       <h2>5. How refunds are processed</h2>
       <p>
         Approved refunds are issued to the original payment method through our
-        payment gateway (Razorpay), typically within [7&ndash;10] business days
+        payment gateway (Razorpay), typically within 7&ndash;10 business days
         of approval. Timing of the credit to your account depends on your bank
         or card issuer.
       </p>

@@ -178,6 +178,32 @@ body.no-scroll {
   scrollbar-width: none;
 }
 
+/* "Pull up a chair" hero video - masked + scrimmed so it blends into the
+   page instead of reading as a hard rectangle. Theme-aware via --primary. */
+.chair-video {
+  /* Full clarity - no blend tint. The mask just feathers the frame edges so
+     the footage dissolves into the page; the chair stays fully visible. */
+  opacity: 1;
+  -webkit-mask-image: radial-gradient(
+    115% 100% at 62% 44%,
+    #000 42%,
+    transparent 78%
+  );
+  mask-image: radial-gradient(115% 100% at 62% 44%, #000 42%, transparent 78%);
+}
+.chair-scrim {
+  /* Fade only the left edge (under the headline) and bottom into the page,
+     so text stays legible while the chair on the right reads clear. */
+  background:
+    linear-gradient(
+      90deg,
+      rgb(var(--primary)) 0%,
+      rgb(var(--primary) / 0.55) 28%,
+      rgb(var(--primary) / 0) 60%
+    ),
+    linear-gradient(0deg, rgb(var(--primary)) 2%, rgb(var(--primary) / 0) 36%);
+}
+
 /* clip-path reveal helpers */
 .clip-reveal-init {
   clip-path: inset(0 100% 0 0);

@@ -8,22 +8,32 @@ import { prefersReducedMotion } from "@/lib/motion";
 
 export default function JoinHero() {
   const root = useRef<HTMLDivElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
-    if (!root.current) return;
+    const video = videoRef.current;
+
     if (prefersReducedMotion()) {
-      gsap.set(root.current.querySelectorAll("[data-split-char]"), {
-        opacity: 1,
-        y: 0,
-        rotateX: 0,
-      });
-      gsap.set(root.current.querySelectorAll("[data-j-eyebrow]"), {
-        opacity: 1,
-        y: 0,
-      });
+      if (video) video.pause();
+      if (root.current) {
+        gsap.set(root.current.querySelectorAll("[data-split-char]"), {
+          opacity: 1,
+          y: 0,
+          rotateX: 0,
+        });
+        gsap.set(root.current.querySelectorAll("[data-j-eyebrow]"), {
+          opacity: 1,
+          y: 0,
+        });
+      }
       return;
     }
+    if (!root.current) return;
     gsap.registerPlugin(ScrollTrigger);
+
+    // Copy holds until the chair is pulled in the clip, then drops in.
+    const REVEAL_AT = 1.3; // seconds into the 3.08s clip, chair settled
+    let cleanup: (() => void) | undefined;
 
     const ctx = gsap.context(() => {
       gsap.set(root.current!.querySelectorAll("[data-split-char]"), {
@@ -31,7 +41,10 @@ export default function JoinHero() {
         transformOrigin: "50% 100%",
       });
 
-      const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+      const tl = gsap.timeline({
+        paused: true,
+        defaults: { ease: "expo.out" },
+      });
       tl.to("[data-j-eyebrow]", { y: 0, opacity: 1, duration: 0.8 }, 0.1)
         .to(
           root.current!.querySelectorAll("[data-split-char]"),
@@ -44,21 +57,25 @@ export default function JoinHero() {
           },
           0.25
         )
-        .from(
-          "[data-j-sub]",
-          { y: 30, opacity: 0, duration: 1 },
-          "-=0.7"
-        )
+        .from("[data-j-sub]", { y: 30, opacity: 0, duration: 1 }, "-=0.7")
         .from(
           "[data-j-meta] > *",
-          {
-            y: 24,
-            opacity: 0,
-            stagger: 0.08,
-            duration: 0.8,
-          },
+          { y: 24, opacity: 0, stagger: 0.08, duration: 0.8 },
           "-=0.6"
         );
+
+      let played = false;
+      const reveal = () => {
+        if (played) return;
+        played = true;
+        tl.play();
+      };
+      const onTime = () => {
+        if (video && video.currentTime >= REVEAL_AT) reveal();
+      };
+      video?.addEventListener("timeupdate", onTime);
+      // Fallback if autoplay is blocked and no timeupdate ever fires.
+      const fallback = window.setTimeout(reveal, 2200);
 
       gsap.to("[data-j-parallax]", {
         yPercent: -22,
@@ -70,8 +87,17 @@ export default function JoinHero() {
           scrub: 0.6,
         },
       });
+
+      cleanup = () => {
+        video?.removeEventListener("timeupdate", onTime);
+        window.clearTimeout(fallback);
+      };
     }, root);
-    return () => ctx.revert();
+
+    return () => {
+      cleanup?.();
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -80,18 +106,27 @@ export default function JoinHero() {
       className="relative flex min-h-[80vh] items-center overflow-hidden pt-32"
       style={{ perspective: 1200 }}
     >
+      {/* "Pull up a chair" footage, blended into the page on the right. */}
       <div
         data-j-parallax
         aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 25% 25%, rgba(0,0,0,0.06), transparent 50%), radial-gradient(circle at 75% 75%, rgba(0,0,0,0.05), transparent 50%)",
-        }}
-      />
+        className="pointer-events-none absolute -inset-y-[10%] right-0 w-[94%] max-w-[920px]"
+      >
+        <video
+          ref={videoRef}
+          className="chair-video absolute inset-0 h-full w-full object-cover"
+          src="/pull-chair.mp4"
+          autoPlay
+          muted
+          playsInline
+          preload="auto"
+        />
+        <div className="chair-scrim absolute inset-0" />
+      </div>
+      {/* Faint dot texture, kept off the right side so the chair stays clean. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.06)_1px,transparent_1px)] bg-[size:5px_5px] opacity-50"
+        className="pointer-events-none absolute inset-y-0 left-0 w-1/2 bg-[radial-gradient(rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:6px_6px] opacity-20 [mask-image:linear-gradient(90deg,#000,transparent)]"
       />
 
       <div className="container-x relative">
@@ -103,7 +138,7 @@ export default function JoinHero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ink opacity-60" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-ink" />
           </span>
-          Cohort 01 applications open &middot; Lucknow
+          Now inviting mentors &middot; Lucknow
         </div>
 
         <h1 className="font-display text-display font-bold text-ink">
@@ -111,7 +146,8 @@ export default function JoinHero() {
           <SplitText
             text="The room is small."
             as="span"
-            className="block brand-gradient-text"
+            className="block"
+            charClassName="brand-gradient-text"
           />
         </h1>
 
@@ -119,10 +155,10 @@ export default function JoinHero() {
           data-j-sub
           className="mt-8 max-w-2xl text-base leading-relaxed text-text-muted md:text-lg"
         >
-          Apply to a cohort, RSVP for a meetup, sign up to mentor - or just say
-          hi. There&rsquo;s no wrong reason to write. We read every message,
-          and if it isn&rsquo;t a fit yet, we&rsquo;ll point you at the room
-          that is.
+          Mentor a founder, back the room, or partner with us - or join the
+          Cohort 01 waitlist. There&rsquo;s no wrong reason to write. We read
+          every message, and if it isn&rsquo;t a fit yet, we&rsquo;ll point you
+          at the room that is.
         </p>
 
         <div

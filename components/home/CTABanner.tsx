@@ -70,21 +70,21 @@ export default function CTABanner() {
           <div className="relative grid gap-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
               <p className="mb-5 text-xs font-semibold uppercase tracking-[0.4em] text-primary/70">
-                Cohort 01 &middot; Applications open
+                Cohort 01 forming &middot; Mentors wanted
               </p>
               <h2
                 data-cta-headline
                 className="font-display text-4xl font-bold leading-[1] tracking-tight text-primary sm:text-5xl md:text-6xl lg:text-7xl"
               >
-                Bring a deck. Or just bring a problem.
+Help us build the room.
               </h2>
               <p
                 data-cta-sub
                 className="mt-6 max-w-xl text-base text-primary/70 md:text-lg"
               >
-                We read every application. If your company isn&rsquo;t a fit
-                yet, we&rsquo;ll point you at the meetup, mentor or peer cohort
-                that is.
+                We&rsquo;re inviting mentors, partners and early backers while
+                Cohort 01 forms. Founders - join the waitlist and we&rsquo;ll
+                keep you close.
               </p>
             </div>
             <div data-cta-btn className="lg:col-span-4 lg:text-right">

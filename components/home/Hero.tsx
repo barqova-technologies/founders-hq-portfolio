@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { prefersReducedMotion } from "@/lib/motion";
 import SplitText from "@/components/ui/SplitText";
 import MagneticButton from "@/components/ui/MagneticButton";
@@ -67,11 +67,6 @@ export default function Hero() {
           "[data-hero-meta] > *",
           { y: 24, opacity: 0, stagger: 0.08, duration: 0.7 },
           "-=0.7"
-        )
-        .from(
-          "[data-scroll-indicator]",
-          { opacity: 0, y: 20, duration: 0.8 },
-          "-=0.5"
         );
 
       // Rotating word loop - smooth fade + rise
@@ -215,7 +210,7 @@ export default function Hero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ink opacity-60" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-ink" />
           </span>
-          Cohort 01 applications open &middot; Lucknow
+          Now inviting mentors &middot; Lucknow
         </div>
 
         <div className="font-display text-display font-bold text-ink">
@@ -284,15 +279,6 @@ export default function Hero() {
         </div>
       </div>
 
-      <div
-        data-scroll-indicator
-        className="absolute inset-x-0 bottom-8 flex flex-col items-center gap-3 text-text-muted"
-      >
-        <span className="text-[10px] uppercase tracking-[0.4em]">Scroll</span>
-        <span className="inline-flex h-9 w-9 animate-scroll-bounce items-center justify-center rounded-full border border-line bg-surface">
-          <ArrowDown size={14} />
-        </span>
-      </div>
     </section>
   );
 }

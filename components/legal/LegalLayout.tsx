@@ -20,11 +20,6 @@ export default function LegalLayout({
         </h1>
         <p className="mt-4 text-sm text-text-muted">Last updated {updated}</p>
 
-        <div className="mt-8 rounded-2xl border border-line bg-surface p-4 text-sm text-text-muted">
-          Template copy - review with legal counsel and replace any bracketed
-          [details] before launch.
-        </div>
-
         <div className="legal-prose mt-10">{children}</div>
       </div>
     </section>

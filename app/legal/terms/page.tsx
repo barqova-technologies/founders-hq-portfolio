@@ -20,8 +20,9 @@ export default function TermsPage() {
       <h2>1. Who we are</h2>
       <p>
         {SITE.name} is a founder community based in {SITE.city}, India,
-        operated by [legal entity name], [entity type], having its registered
-        office at {SITE.address}. References to &ldquo;we&rdquo;,
+        operated by Infinity Ventures, a sole proprietorship, having its
+        registered office at {SITE.address}. GSTIN: 09EKCPM2387E1Z0. References
+        to &ldquo;we&rdquo;,
         &ldquo;us&rdquo; or &ldquo;our&rdquo; mean that entity.
       </p>
 

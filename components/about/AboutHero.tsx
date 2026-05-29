@@ -89,7 +89,12 @@ export default function AboutHero() {
         </p>
         <h1 className="font-display text-display font-bold text-ink">
           <SplitText text="It starts with" as="span" className="block" />
-          <SplitText text="a room." as="span" className="block brand-gradient-text" />
+          <SplitText
+            text="a room."
+            as="span"
+            className="block"
+            charClassName="brand-gradient-text"
+          />
         </h1>
         <p
           data-about-sub

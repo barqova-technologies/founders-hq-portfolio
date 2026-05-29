@@ -7,11 +7,11 @@ import { ArrowUpRight, Check } from "lucide-react";
 import { SITE } from "@/lib/data";
 
 const reasons = [
-  "I'm applying to a cohort",
-  "I want to attend a meetup",
   "I'd like to mentor",
   "I'm a fund / capital partner",
-  "Press / podcast / partnership",
+  "I want to partner / collaborate",
+  "Join the Cohort 01 waitlist",
+  "I want to attend a meetup",
   "Something else",
 ];
 

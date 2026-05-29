@@ -9,8 +9,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "A new working community of founders, starting in Lucknow. Cohort 01 forming now.",
     start_url: "/",
     display: "standalone",
-    background_color: "#0b0b0c",
-    theme_color: "#0b0b0c",
+    background_color: "#fafafa",
+    theme_color: "#fafafa",
     icons: [
       { src: "/icon", sizes: "32x32", type: "image/png" },
       { src: "/apple-icon", sizes: "180x180", type: "image/png" },

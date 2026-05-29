@@ -20,7 +20,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 const description =
-  "Founder's HQ is a new working community of operators, builders and outliers - starting in Lucknow with a founding cohort, regular meetups and a hand-picked mentor bench. Cohort 01 applications open.";
+  "Founder's HQ is a new working community of operators, builders and outliers - starting in Lucknow with a founding cohort, regular meetups and a hand-picked mentor bench. Now inviting mentors and partners; Cohort 01 forming.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -62,8 +62,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0B0B0C",
-  colorScheme: "dark light",
+  themeColor: "#FAFAFA",
+  colorScheme: "light dark",
 };
 
 // Organization structured data for search engines.
@@ -87,8 +87,8 @@ const orgJsonLd = {
 };
 
 // Runs before paint so the saved theme is applied with no flash.
-// New visitors default to dark (the brand default); a saved choice wins.
-const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t='dark';}document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='dark';}})();`;
+// New visitors default to light (white); a saved choice wins.
+const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t='light';}document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='light';}})();`;
 
 export default function RootLayout({
   children,

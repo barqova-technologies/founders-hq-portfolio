@@ -235,9 +235,14 @@ export const MEETUP_FORMATS: MeetupFormat[] = [
 // Forward-looking roadmap - clearly the plan, not claimed history.
 export const ROADMAP = [
   {
+    year: "Now",
+    title: "We assemble the bench",
+    body: "Founder's HQ takes shape in Lucknow. We're hand-picking mentors, partners and early backers - and opening the Cohort 01 waitlist.",
+  },
+  {
     year: "2026",
     title: "We open the doors",
-    body: "Founder's HQ launches in Lucknow. Cohort 01 applications open and the first founder meetups begin.",
+    body: "Cohort 01 applications open, the founding batch is selected, and the first founder meetups begin.",
   },
   {
     year: "2026 · H2",

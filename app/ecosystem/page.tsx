@@ -30,12 +30,13 @@ export default function EcosystemPage() {
               Ready To Plug In?
             </p>
             <h2 className="mx-auto mt-6 max-w-3xl font-display text-4xl font-bold leading-[1.05] tracking-tight text-ink md:text-6xl">
-              Apply to the cohort. <br />
-              <span className="brand-gradient-text">Or come to a meetup.</span>
+              Mentor the first cohort. <br />
+              <span className="brand-gradient-text">Or partner with us.</span>
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-text-muted">
-              Cohort 01 applications are open and the first meetups are coming.
-              Drop us a line and we&rsquo;ll point you at the right room.
+              We&rsquo;re inviting mentors and partners while Cohort 01 forms.
+              Founders can join the waitlist. Drop us a line and we&rsquo;ll
+              point you at the right room.
             </p>
             <div className="mt-10 inline-block">
               <Link href="/join">

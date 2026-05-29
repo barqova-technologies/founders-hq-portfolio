@@ -143,17 +143,12 @@ export default function JoinHero() {
 
         <h1 className="font-display text-display font-bold text-ink">
           <SplitText text="Pull up a chair." as="span" className="block" />
-          <SplitText
-            text="The room is small."
-            as="span"
-            className="block"
-            charClassName="brand-gradient-text"
-          />
+          <SplitText text="The room is small." as="span" className="block" />
         </h1>
 
         <p
           data-j-sub
-          className="mt-8 max-w-2xl text-base leading-relaxed text-text-muted md:text-lg"
+          className="mt-8 max-w-2xl text-base leading-relaxed text-ink md:text-lg"
         >
           Mentor a founder, back the room, or partner with us - or join the
           Cohort 01 waitlist. There&rsquo;s no wrong reason to write. We read
@@ -163,7 +158,7 @@ export default function JoinHero() {
 
         <div
           data-j-meta
-          className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-4 text-xs uppercase tracking-[0.3em] text-text-muted"
+          className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-4 text-xs uppercase tracking-[0.3em] text-ink"
         >
           <span>Cohort 01 Forming</span>
           <span className="hidden h-1 w-1 rounded-full bg-text-muted sm:block" />

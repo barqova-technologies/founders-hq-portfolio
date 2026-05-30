@@ -4,7 +4,6 @@ import Manifesto from "@/components/home/Manifesto";
 import PillarsGrid from "@/components/home/PillarsGrid";
 import PinnedPrograms from "@/components/home/PinnedPrograms";
 import MarqueeStrip from "@/components/home/MarqueeStrip";
-import CohortShowcase from "@/components/home/CohortShowcase";
 import Meetups from "@/components/home/Meetups";
 import FoundingNote from "@/components/home/FoundingNote";
 import CTABanner from "@/components/home/CTABanner";
@@ -18,7 +17,6 @@ export default function HomePage() {
       <MarqueeStrip />
       <PillarsGrid />
       <PinnedPrograms />
-      <CohortShowcase />
       <Meetups />
       <FoundingNote />
       <CTABanner />

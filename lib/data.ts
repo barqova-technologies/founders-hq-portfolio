@@ -7,7 +7,7 @@ export const SITE = {
   manifesto:
     "Founder's HQ is a new working community for the people building from Lucknow and across Uttar Pradesh - a small room where conviction gets stress-tested, the right introductions happen early, and the next wave of UP startups gets built before anyone's posting about it. We're starting with one cohort and one rule: keep the room small, keep it honest.",
   // Contact - replace with real values before launch.
-  email: "hello@foundershq.org",
+  email: "team@foundershq.org",
   // Leave empty to hide. Fill with a real number before launch.
   phone: "",
   city: "Lucknow",
@@ -255,52 +255,6 @@ export const PILLARS: Pillar[] = [
   },
 ];
 
-// The kinds of founders Cohort 01 is built for - not a portfolio (we don't have one yet).
-export type CohortTrack = {
-  category: "AI" | "ClimateTech" | "D2C" | "DevTools" | "B2B SaaS" | "Health";
-  title: string;
-  blurb: string;
-  gradient: string;
-};
-
-export const COHORT_TRACKS: CohortTrack[] = [
-  {
-    category: "AI",
-    title: "AI & Applied ML",
-    blurb: "Founders putting models to work on real, unglamorous problems.",
-    gradient: "linear-gradient(135deg,#171717 0%,#404040 100%)",
-  },
-  {
-    category: "ClimateTech",
-    title: "Climate & Energy",
-    blurb: "Hardware, software and services for a cleaner grid.",
-    gradient: "linear-gradient(135deg,#0A0A0A 0%,#3F3F3F 100%)",
-  },
-  {
-    category: "D2C",
-    title: "Consumer & D2C",
-    blurb: "Brands and products built for the next 500M consumers.",
-    gradient: "linear-gradient(135deg,#1A1A1A 0%,#5C5C5C 100%)",
-  },
-  {
-    category: "DevTools",
-    title: "Developer Tools",
-    blurb: "Infrastructure and tooling for teams that ship daily.",
-    gradient: "linear-gradient(135deg,#262626 0%,#737373 100%)",
-  },
-  {
-    category: "B2B SaaS",
-    title: "B2B SaaS",
-    blurb: "Software that earns its seat in the workflow.",
-    gradient: "linear-gradient(135deg,#0A0A0A 0%,#525252 100%)",
-  },
-  {
-    category: "Health",
-    title: "Health & Bio",
-    blurb: "Affordable, accessible tools for diagnostics and care.",
-    gradient: "linear-gradient(135deg,#0F0F0F 0%,#666666 100%)",
-  },
-];
 
 // Formats we're starting with - not dated events (we haven't run them yet).
 export type MeetupFormat = {

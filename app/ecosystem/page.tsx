@@ -4,7 +4,6 @@ import { ArrowUpRight } from "lucide-react";
 import EcosystemHero from "@/components/ecosystem/EcosystemHero";
 import NetworkBento from "@/components/ecosystem/NetworkBento";
 import ProgramsDetail from "@/components/ecosystem/ProgramsDetail";
-import CohortGrid from "@/components/ecosystem/CohortGrid";
 import PartnersBlock from "@/components/ecosystem/PartnersBlock";
 import MagneticButton from "@/components/ui/MagneticButton";
 
@@ -20,7 +19,6 @@ export default function EcosystemPage() {
       <EcosystemHero />
       <NetworkBento />
       <ProgramsDetail />
-      <CohortGrid />
       <PartnersBlock />
 
       <section className="section-pad">

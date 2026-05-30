@@ -160,13 +160,16 @@ export default function PillarsGrid() {
                     Coming soon
                   </span>
                 ) : (
-                  <div className="mt-7 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.25em] text-text-muted transition-colors group-hover:text-ink">
+                  <Link
+                    href="/ecosystem"
+                    className="mt-7 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.25em] text-text-muted transition-colors group-hover:text-ink"
+                  >
                     Learn more
                     <ArrowUpRight
                       size={14}
                       className="transition-transform group-hover:rotate-45"
                     />
-                  </div>
+                  </Link>
                 )}
               </article>
             );

@@ -22,13 +22,14 @@ app/                  # App Router pages and layout
   about/              # /about
   ecosystem/          # /ecosystem
   join/               # /join
+  api/join/route.ts   # Server route: emails applications via Resend
   not-found.tsx       # 404
   globals.css         # Tailwind + design tokens
 components/
   home/               # Home sections (Hero, Manifesto, etc.)
   about/              # About page sections
   ecosystem/          # Ecosystem page sections
-  join/               # Join page sections
+  join/               # Join page sections (JoinForm posts to /api/join)
   layout/             # Navbar, Footer, Preloader, PageTransition
   ui/                 # Reusable primitives (MagneticButton, SplitText, etc.)
 lib/
@@ -59,6 +60,10 @@ Then open http://localhost:3000.
 
 ## Notes
 
-- All routes are statically prerendered (`○ Static` in the build output) - no runtime server logic is required.
-- The Join page form posts to a no-backend form service. Set `NEXT_PUBLIC_FORM_ENDPOINT` in `.env.local` (see `.env.example`) to your Formspree/Web3Forms/Getform form URL. Without it, the form shows a "not connected yet" message.
+- Pages are statically prerendered; the only runtime server logic is `app/api/join/route.ts`, which emails applications via [Resend](https://resend.com).
+- The Join page form posts JSON to `/api/join`. Configure these in `.env.local` (see `.env.example`):
+  - `RESEND_API_KEY` — server-side API key from your Resend dashboard.
+  - `JOIN_FROM_EMAIL` — verified sender on your Resend domain, e.g. `Founder's HQ <apply@foundershq.org>`.
+  - `JOIN_TO_EMAIL` — inbox that receives applications.
+  You must verify your sending domain in Resend before email will deliver.
 - `next-env.d.ts` and `*.tsbuildinfo` are intentionally git-ignored; Next.js regenerates them.

@@ -6,25 +6,16 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight, Check } from "lucide-react";
 import { SITE } from "@/lib/data";
 
-const reasons = [
-  "I'd like to mentor",
-  "I'm a fund / capital partner",
-  "I want to partner / collaborate",
-  "Join the Cohort 01 waitlist",
-  "I want to attend a meetup",
-  "Something else",
+const joinOptions = [
+  "Member",
+  "Mentor",
+  "Investor/VC",
+  "College Ambassador",
+  "Creator Member (Influencers)",
 ];
 
-const stages = [
-  "Idea / pre-product",
-  "Pre-seed",
-  "Seed",
-  "Series A or later",
-  "Not a founder",
-];
-
-// Set this to your form endpoint (e.g. a Formspree form URL: https://formspree.io/f/xxxxxxx).
-const FORM_ENDPOINT = process.env.NEXT_PUBLIC_FORM_ENDPOINT;
+// Submissions POST to the internal Resend-backed route (see app/api/join/route.ts).
+const FORM_ENDPOINT = "/api/join";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -56,23 +47,34 @@ export default function JoinForm() {
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
-
-    if (!FORM_ENDPOINT) {
-      setStatus("error");
-      setError(
-        "The form isn't connected yet. Set NEXT_PUBLIC_FORM_ENDPOINT, or email us directly."
-      );
-      return;
-    }
+    const fd = new FormData(form);
 
     setStatus("submitting");
     setError("");
 
+    // Honeypot: silently succeed for bots that fill the hidden field.
+    if (fd.get("_gotcha")) {
+      setStatus("success");
+      form.reset();
+      return;
+    }
+
+    const payload = {
+      name: fd.get("name"),
+      company: fd.get("company"),
+      title: fd.get("title"),
+      email: fd.get("email"),
+      phone: fd.get("phone"),
+      estYear: fd.get("estYear"),
+      joinType: fd.get("joinType"),
+      lookingFor: fd.get("lookingFor"),
+    };
+
     try {
       const res = await fetch(FORM_ENDPOINT, {
         method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" },
+        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
       });
 
       if (res.ok) {
@@ -82,7 +84,7 @@ export default function JoinForm() {
         const data = await res.json().catch(() => null);
         setStatus("error");
         setError(
-          data?.errors?.[0]?.message ??
+          data?.error ??
             "Something went wrong. Try again, or email us directly."
         );
       }
@@ -121,7 +123,7 @@ export default function JoinForm() {
       />
 
       <div data-field className="grid gap-6 md:grid-cols-2">
-        <Field label="Your name">
+        <Field label="Full Name *">
           <input
             required
             name="name"
@@ -130,7 +132,28 @@ export default function JoinForm() {
             className="form-input"
           />
         </Field>
-        <Field label="Email">
+        <Field label="Company / Startup Name *">
+          <input
+            required
+            name="company"
+            type="text"
+            placeholder="Company or startup name"
+            className="form-input"
+          />
+        </Field>
+      </div>
+
+      <div data-field className="grid gap-6 md:grid-cols-2">
+        <Field label="Title *">
+          <input
+            required
+            name="title"
+            type="text"
+            placeholder="Your role / designation"
+            className="form-input"
+          />
+        </Field>
+        <Field label="Email *">
           <input
             required
             name="email"
@@ -142,20 +165,38 @@ export default function JoinForm() {
       </div>
 
       <div data-field className="grid gap-6 md:grid-cols-2">
-        <Field label="Company / startup">
+        <Field label="Contact Number *">
           <input
-            name="company"
-            type="text"
-            placeholder="Optional"
+            required
+            name="phone"
+            type="tel"
+            placeholder="+91 00000 00000"
             className="form-input"
           />
         </Field>
-        <Field label="Why are you reaching out?">
-          <select required name="reason" className="form-input bg-primary">
-            <option value="">Pick the closest match</option>
-            {reasons.map((r) => (
-              <option key={r} value={r}>
-                {r}
+        <Field label="Establishment Year *">
+          <input
+            required
+            name="estYear"
+            type="number"
+            inputMode="numeric"
+            min={1900}
+            max={2100}
+            placeholder="e.g. 2024"
+            className="form-input"
+          />
+        </Field>
+      </div>
+
+      <div data-field>
+        <Field label="How do you want to join? *">
+          <select required name="joinType" defaultValue="" className="form-input bg-primary">
+            <option value="" disabled>
+              Select one
+            </option>
+            {joinOptions.map((o) => (
+              <option key={o} value={o}>
+                {o}
               </option>
             ))}
           </select>
@@ -163,25 +204,12 @@ export default function JoinForm() {
       </div>
 
       <div data-field>
-        <Field label="Stage (if applicable)">
-          <select name="stage" className="form-input bg-primary">
-            <option value="">Optional</option>
-            {stages.map((s) => (
-              <option key={s} value={s}>
-                {s}
-              </option>
-            ))}
-          </select>
-        </Field>
-      </div>
-
-      <div data-field>
-        <Field label="Tell us more">
+        <Field label="What are you looking for? *">
           <textarea
             required
-            name="message"
+            name="lookingFor"
             rows={6}
-            placeholder="What you're building, what you're looking for, or whatever you'd say if we were at the same dinner table."
+            placeholder="Tell us what you're looking for."
             className="form-input resize-none"
           />
         </Field>

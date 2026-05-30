@@ -63,95 +63,195 @@ export type Pillar = {
   long: string;
   features: string[];
   icon:
-    | "Rocket"
     | "Users"
-    | "HeartHandshake"
-    | "Mic"
+    | "Landmark"
     | "Building2"
-    | "MessageCircle";
+    | "Briefcase"
+    | "Megaphone"
+    | "TrendingUp"
+    | "FlaskConical"
+    | "HeartHandshake"
+    | "Library"
+    | "CalendarDays"
+    | "Hammer"
+    | "Gauge"
+    | "GraduationCap"
+    | "Factory"
+    | "Presentation"
+    | "Globe"
+    | "Lightbulb";
+  comingSoon?: boolean;
 };
 
 export const PILLARS: Pillar[] = [
   {
-    slug: "accelerator",
-    title: "The Accelerator",
+    slug: "inner-circle",
+    title: "Inner Circle",
     short:
-      "A focused cohort program for early-stage founders building from Lucknow and across UP.",
+      "A curated community of ambitious founders building, sharing and growing together.",
     long:
-      "Cohort 01 is forming now - a small founding batch, pre-seed to early stage. The program is curriculum-light and conversation-heavy: working sessions, founder dinners, paired mentor time, and a closing showcase. We're keeping the first cohort deliberately small.",
+      "A strong community of founders who build, share and grow together - meeting every month across a range of meet-ups, conferences and events.",
     features: [
-      "12-week program",
-      "Pre-seed to early stage",
-      "Founding cohort - limited seats",
-    ],
-    icon: "Rocket",
-  },
-  {
-    slug: "meetups",
-    title: "Founder Meetups",
-    short: "Small-room conversations for founders, starting in Lucknow.",
-    long:
-      "Most of what matters in a startup happens in a room with a few other people who get it. We're starting a regular rhythm of founder meetups in Lucknow - peer sessions, office hours and founder dinners - and growing it with the community, not ahead of it.",
-    features: [
-      "Stage-matched peer groups",
-      "Open community sessions",
-      "Founder-only dinners",
+      "Monthly meet-ups & events",
+      "Curated founder network",
+      "Conferences & socials",
     ],
     icon: "Users",
   },
   {
-    slug: "mentors",
-    title: "Mentor Network",
-    short:
-      "A hand-picked bench of operators, founders and investors - curated, not crowd-sourced.",
+    slug: "capital-bridge",
+    title: "Capital Bridge",
+    short: "Direct access to investors, funding and meaningful capital connections.",
     long:
-      "Our mentors are chosen, not collected - each one has either built a company through scale or led an investment cycle. Members get matched on real questions, not coffee chats. We're building this bench deliberately as the community grows.",
+      "Direct access to investors, funding opportunities and meaningful capital connections - so the right money finds the right founders.",
     features: [
-      "Vetted operators & investors",
-      "Question-based matching",
-      "Hands-on with each cohort",
+      "Investor introductions",
+      "Funding opportunities",
+      "Warm capital connections",
     ],
-    icon: "HeartHandshake",
+    icon: "Landmark",
   },
   {
-    slug: "demo-days",
-    title: "Demo Days",
-    short:
-      "The room we're building for founders to pitch the people who matter.",
+    slug: "build-space",
+    title: "Build Space",
+    short: "A high-energy coworking space built for focus and execution.",
     long:
-      "Demo days won't be beauty contests. Every cohort founder gets a short slot, a curated investor list, and a moderated Q&A. We're assembling the room now - starting with the investors and operators closest to the UP ecosystem.",
-    features: [
-      "Curated investor room",
-      "Pre-vetted matching",
-      "Moderated Q&A and follow-ups",
-    ],
-    icon: "Mic",
-  },
-  {
-    slug: "studios",
-    title: "Studios & Coworking",
-    short: "A working space for the cohort. Community plans as we grow.",
-    long:
-      "A place to actually work - desks, meeting rooms, and a spot to record and ship. Cohort 01 founders get space for the program; community plans will open as the room grows. Based in Lucknow.",
-    features: [
-      "Cohort workspace in Lucknow",
-      "Meeting & recording space",
-      "Community plans coming",
-    ],
+      "A high-energy workspace designed for focus, collaboration and execution - desks, meeting rooms and room to ship.",
+    features: ["Coworking desks", "Meeting rooms", "Collaboration zones"],
     icon: "Building2",
   },
   {
-    slug: "forums",
-    title: "Founder Forums",
-    short: "Private channels, peer cohorts, and the things you don't post.",
+    slug: "talent-vault",
+    title: "Talent Vault",
+    short: "A vetted pool of skilled talent ready to scale your startup.",
     long:
-      "The unglamorous half of community: peer-group calls, private channels by stage, and a quiet forum for the questions founders don't put on LinkedIn. Vetted, moderated, and small on purpose.",
-    features: [
-      "Stage-based private channels",
-      "Peer-group calls",
-      "Strict no-pitch policy",
-    ],
-    icon: "MessageCircle",
+      "A vetted pool of skilled talent ready to join and scale your startup - hiring made faster and safer.",
+    features: ["Vetted candidates", "Hiring support", "Scale-ready talent"],
+    icon: "Briefcase",
+  },
+  {
+    slug: "spotlight",
+    title: "Spotlight",
+    short: "PR, social and speaking to get you seen, heard and recognised.",
+    long:
+      "Get seen, heard and recognised through PR, social media and speaking opportunities - including Reels, podcasts and media interviews.",
+    features: ["PR & media interviews", "Reels & podcasts", "Speaking slots"],
+    icon: "Megaphone",
+  },
+  {
+    slug: "scale-engine",
+    title: "Scale Engine",
+    short: "Structured support and guidance to accelerate your growth.",
+    long:
+      "Structured support, resources and guidance to accelerate your startup's growth - so momentum compounds.",
+    features: ["Growth playbooks", "Resources & guidance", "Hands-on support"],
+    icon: "TrendingUp",
+  },
+  {
+    slug: "launch-lab",
+    title: "Launch Lab",
+    short: "Test ideas, get real feedback and launch faster.",
+    long:
+      "Test ideas, get real feedback and launch faster with founder-driven insights - in rooms built for honest feedback.",
+    features: ["Feedback rooms", "Launch support", "Founder insights"],
+    icon: "FlaskConical",
+  },
+  {
+    slug: "synergy-hub",
+    title: "Synergy Hub",
+    short: "Collaborate with founders to unlock partnerships and opportunities.",
+    long:
+      "Collaborate with like-minded founders to unlock partnerships and new opportunities - the upside of building in a room.",
+    features: ["Founder collaborations", "Partnership intros", "New opportunities"],
+    icon: "HeartHandshake",
+  },
+  {
+    slug: "founder-stack",
+    title: "Founder Stack",
+    short: "Essential tools, templates and resources to build efficiently.",
+    long:
+      "Access essential tools, templates and resources to build and scale efficiently - the founder's resource library.",
+    features: ["Tools & templates", "Resource library", "Build faster"],
+    icon: "Library",
+  },
+  {
+    slug: "hq-live",
+    title: "HQ Live",
+    short: "Curated workshops, founder talks and events with real takeaways.",
+    long:
+      "Curated workshops, founder talks and events designed to deliver actionable insights and real value.",
+    features: ["Workshops", "Founder talks", "Live events"],
+    icon: "CalendarDays",
+  },
+  {
+    slug: "venture-forge",
+    title: "Venture Forge",
+    short: "Hands-on incubation that turns early ideas into investable businesses.",
+    long:
+      "Turn early-stage ideas into investable, scalable businesses through hands-on incubation and expert support.",
+    features: ["Hands-on incubation", "Expert support", "Idea to investable"],
+    icon: "Hammer",
+    comingSoon: true,
+  },
+  {
+    slug: "startup-sprint",
+    title: "Startup Sprint",
+    short: "An intensive, milestone-driven accelerator for rapid traction.",
+    long:
+      "An intensive, milestone-driven program designed to help startups achieve rapid growth and market traction.",
+    features: ["Milestone-driven", "Rapid growth", "Market traction"],
+    icon: "Gauge",
+    comingSoon: true,
+  },
+  {
+    slug: "founder-fellows",
+    title: "Founder Fellows",
+    short: "A selective fellowship for high-potential founders.",
+    long:
+      "A selective program for high-potential founders focused on leadership, innovation and long-term impact.",
+    features: ["Selective cohort", "Leadership focus", "Long-term impact"],
+    icon: "GraduationCap",
+    comingSoon: true,
+  },
+  {
+    slug: "venture-studio",
+    title: "Venture Studio",
+    short: "Co-build startups alongside experienced operators and partners.",
+    long:
+      "Co-build startups alongside experienced operators, advisors and execution partners.",
+    features: ["Co-build model", "Operators & advisors", "Execution partners"],
+    icon: "Factory",
+    comingSoon: true,
+  },
+  {
+    slug: "demo-day",
+    title: "Demo Day",
+    short: "Showcase your startup to investors, partners and ecosystem leaders.",
+    long:
+      "Present your startup to investors, partners and ecosystem leaders in a high-visibility environment.",
+    features: ["Investor showcase", "High visibility", "Ecosystem leaders"],
+    icon: "Presentation",
+    comingSoon: true,
+  },
+  {
+    slug: "global-gateway",
+    title: "Global Gateway",
+    short: "Resources and connections to enter and grow in new markets.",
+    long:
+      "Resources, connections and support to help startups enter and grow in new markets.",
+    features: ["Market entry", "Global connections", "Expansion support"],
+    icon: "Globe",
+    comingSoon: true,
+  },
+  {
+    slug: "innovation-garage",
+    title: "Innovation Garage",
+    short: "Experiment, validate and refine ideas before you commit.",
+    long:
+      "Experiment, validate and refine startup ideas before committing significant time and capital.",
+    features: ["Idea validation", "Experimentation", "Refine before commit"],
+    icon: "Lightbulb",
+    comingSoon: true,
   },
 ];
 

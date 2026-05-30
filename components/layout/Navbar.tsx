@@ -89,7 +89,7 @@ export default function Navbar() {
               href="/join"
               className="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-primary shadow-[0_8px_24px_-8px_rgba(0,0,0,0.4)] transition-transform hover:-translate-y-0.5 lg:inline-block"
             >
-              Join the Community
+              Join the Waitlist
             </Link>
             <button
               aria-label="Toggle menu"

@@ -1,6 +1,6 @@
 # Founder's HQ - Portfolio
 
-Marketing site for **Founder's HQ**, a new working community of operators and outliers - starting in Lucknow with a founding cohort, regular founder meetups and a hand-picked mentor bench. Cohort 01 applications are open.
+Marketing site for **Founder's HQ**, a new working community of operators and outliers - starting in Lucknow with a founding cohort, regular founder meetups and a hand-picked mentor bench. Now inviting mentors and partners; Cohort 01 is forming and the waitlist is open.
 
 Built with the Next.js App Router, TypeScript, Tailwind CSS, GSAP and Framer Motion.
 

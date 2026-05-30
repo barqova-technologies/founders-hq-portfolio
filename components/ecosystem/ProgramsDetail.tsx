@@ -98,13 +98,19 @@ export default function ProgramsDetail() {
                   <div data-program-img className="lg:col-span-6">
                     <div
                       className="relative aspect-[5/4] w-full overflow-hidden rounded-3xl border border-line"
-                      style={{ background: gradients[i] }}
+                      style={{ background: gradients[i % gradients.length] }}
                     >
                       <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:5px_5px] opacity-60" />
                       <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_50%,rgba(0,0,0,0.6))]" />
                       <div className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.3em] text-white backdrop-blur">
-                        Program {String(i + 1).padStart(2, "0")} / 06
+                        Program {String(i + 1).padStart(2, "0")} /{" "}
+                        {String(PILLARS.length).padStart(2, "0")}
                       </div>
+                      {p.comingSoon && (
+                        <div className="absolute right-6 top-6 inline-flex items-center rounded-full border border-white/20 bg-black/30 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.3em] text-white backdrop-blur">
+                          Coming soon
+                        </div>
+                      )}
                       <div className="absolute inset-x-6 bottom-6">
                         <p className="font-display text-2xl font-bold text-white sm:text-3xl">
                           {p.title}
@@ -115,7 +121,8 @@ export default function ProgramsDetail() {
 
                   <div data-program-text className="lg:col-span-6">
                     <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ink">
-                      {String(i + 1).padStart(2, "0")} &middot; Program
+                      {String(i + 1).padStart(2, "0")} &middot;{" "}
+                      {p.comingSoon ? "Coming soon" : "Program"}
                     </p>
                     <h3 className="mt-4 font-display text-3xl font-bold leading-tight tracking-tight text-ink md:text-5xl">
                       {p.title}

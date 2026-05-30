@@ -51,7 +51,7 @@ export default function PinnedPrograms() {
       <div className="container-x py-24">
         <SectionHeading
           eyebrow="Inside The HQ"
-          title="Six programs. One operating system."
+          title="Everything a founder needs. One HQ."
           subtitle="Scroll through what we run. Each program plugs into the others - by design."
         />
       </div>
@@ -62,17 +62,18 @@ export default function PinnedPrograms() {
           <div className="sticky top-32 space-y-6">
             <div
               className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-line transition-[background] duration-700"
-              style={{ background: visualGradients[active] }}
+              style={{ background: visualGradients[active % visualGradients.length] }}
             >
               <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:6px_6px] opacity-60" />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_50%,rgba(0,0,0,0.5))]" />
 
               <div className="absolute inset-x-6 top-6 flex items-center justify-between">
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.3em] text-white backdrop-blur">
-                  Program {String(active + 1).padStart(2, "0")} / 06
+                  Program {String(active + 1).padStart(2, "0")} /{" "}
+                  {String(PILLARS.length).padStart(2, "0")}
                 </span>
                 <span className="text-[10px] uppercase tracking-[0.3em] text-white/70">
-                  Program
+                  {PILLARS[active].comingSoon ? "Coming soon" : "Live"}
                 </span>
               </div>
 
@@ -133,7 +134,15 @@ export default function PinnedPrograms() {
               >
                 <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-text-muted">
                   <span className="h-px w-8 bg-text-muted" />
-                  <span>{String(i + 1).padStart(2, "0")} / 06</span>
+                  <span>
+                    {String(i + 1).padStart(2, "0")} /{" "}
+                    {String(PILLARS.length).padStart(2, "0")}
+                  </span>
+                  {p.comingSoon && (
+                    <span className="rounded-full border border-line px-2 py-0.5 text-[9px]">
+                      Soon
+                    </span>
+                  )}
                 </div>
                 <h3 className="font-display text-3xl font-bold leading-tight tracking-tight text-ink md:text-5xl">
                   {p.title}
@@ -156,7 +165,7 @@ export default function PinnedPrograms() {
                 {/* Mobile visual under each item */}
                 <div
                   className="mt-4 aspect-[16/9] overflow-hidden rounded-2xl border border-line lg:hidden"
-                  style={{ background: visualGradients[i] }}
+                  style={{ background: visualGradients[i % visualGradients.length] }}
                 >
                   <div className="h-full w-full bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:5px_5px] opacity-60" />
                 </div>

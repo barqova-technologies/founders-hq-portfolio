@@ -5,12 +5,23 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { prefersReducedMotion } from "@/lib/motion";
 import {
-  Building2,
-  HeartHandshake,
-  MessageCircle,
-  Mic,
-  Rocket,
   Users,
+  Landmark,
+  Building2,
+  Briefcase,
+  Megaphone,
+  TrendingUp,
+  FlaskConical,
+  HeartHandshake,
+  Library,
+  CalendarDays,
+  Hammer,
+  Gauge,
+  GraduationCap,
+  Factory,
+  Presentation,
+  Globe,
+  Lightbulb,
   ArrowUpRight,
 } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -18,12 +29,23 @@ import { PILLARS } from "@/lib/data";
 import Link from "next/link";
 
 const icons = {
-  Rocket,
   Users,
-  HeartHandshake,
-  Mic,
+  Landmark,
   Building2,
-  MessageCircle,
+  Briefcase,
+  Megaphone,
+  TrendingUp,
+  FlaskConical,
+  HeartHandshake,
+  Library,
+  CalendarDays,
+  Hammer,
+  Gauge,
+  GraduationCap,
+  Factory,
+  Presentation,
+  Globe,
+  Lightbulb,
 };
 
 export default function PillarsGrid() {
@@ -92,9 +114,9 @@ export default function PillarsGrid() {
       <div className="container-x">
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
           <SectionHeading
-            eyebrow="Six Pillars"
+            eyebrow="Our Offerings"
             title="What you'll find inside the HQ."
-            subtitle="The community runs on six things. They overlap on purpose."
+            subtitle="Everything a founder needs to build, fund, hire and scale - in one place. They overlap on purpose."
           />
           <Link
             href="/ecosystem"
@@ -123,7 +145,8 @@ export default function PillarsGrid() {
                     <Icon size={20} />
                   </span>
                   <span className="text-xs text-text-muted">
-                    {String(i + 1).padStart(2, "0")} / 06
+                    {String(i + 1).padStart(2, "0")} /{" "}
+                    {String(PILLARS.length).padStart(2, "0")}
                   </span>
                 </div>
                 <h3 className="font-display text-xl font-semibold leading-snug text-ink">
@@ -132,10 +155,19 @@ export default function PillarsGrid() {
                 <p className="mt-3 text-sm leading-relaxed text-text-muted">
                   {p.short}
                 </p>
-                <div className="mt-7 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.25em] text-text-muted transition-colors group-hover:text-ink">
-                  Learn more
-                  <ArrowUpRight size={14} className="transition-transform group-hover:rotate-45" />
-                </div>
+                {p.comingSoon ? (
+                  <span className="mt-7 inline-flex w-fit items-center gap-2 rounded-full border border-line px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-text-muted">
+                    Coming soon
+                  </span>
+                ) : (
+                  <div className="mt-7 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.25em] text-text-muted transition-colors group-hover:text-ink">
+                    Learn more
+                    <ArrowUpRight
+                      size={14}
+                      className="transition-transform group-hover:rotate-45"
+                    />
+                  </div>
+                )}
               </article>
             );
           })}

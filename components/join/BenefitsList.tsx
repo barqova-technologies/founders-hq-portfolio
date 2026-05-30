@@ -5,45 +5,45 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { prefersReducedMotion } from "@/lib/motion";
 import {
-  Coffee,
-  HeartHandshake,
-  MessageCircle,
-  Mic,
-  Rocket,
+  Users,
+  Landmark,
   Building2,
+  Briefcase,
+  Megaphone,
+  TrendingUp,
 } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 const BENEFITS = [
   {
-    icon: Rocket,
-    title: "Cohort Access",
-    body: "A founding cohort of 6–12 founders. The shortest version of a peer group that actually works.",
+    icon: Users,
+    title: "Inner Circle",
+    body: "A curated community of ambitious founders, meeting every month across meet-ups and events.",
   },
   {
-    icon: HeartHandshake,
-    title: "Mentor Matching",
-    body: "A hand-picked bench of operators and investors. Matched on real questions, not coffee chats.",
-  },
-  {
-    icon: Mic,
-    title: "Demo Days",
-    body: "An invite-only room with a curated set of investors. Short slot, moderated Q&A.",
-  },
-  {
-    icon: MessageCircle,
-    title: "Private Forums",
-    body: "Stage-based channels with a strict no-pitch policy. The questions you don't put on LinkedIn.",
-  },
-  {
-    icon: Coffee,
-    title: "Founder Dinners",
-    body: "Small and frequent, in Lucknow. The work happens in private rooms, on purpose.",
+    icon: Landmark,
+    title: "Capital Bridge",
+    body: "Direct access to investors, funding opportunities and meaningful capital connections.",
   },
   {
     icon: Building2,
-    title: "Studios & Coworking",
-    body: "A working space in Lucknow - desks for cohort founders, community plans as we grow.",
+    title: "Build Space",
+    body: "A high-energy coworking space in Lucknow, built for focus, collaboration and execution.",
+  },
+  {
+    icon: Briefcase,
+    title: "Talent Vault",
+    body: "A vetted pool of skilled talent ready to join and scale your startup.",
+  },
+  {
+    icon: Megaphone,
+    title: "Spotlight",
+    body: "PR, social and speaking - Reels, podcasts and media interviews to get you seen.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Scale Engine",
+    body: "Structured support, resources and guidance to accelerate your growth.",
   },
 ];
 

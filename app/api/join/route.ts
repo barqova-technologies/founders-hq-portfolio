@@ -1,9 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-// Server-side only — RESEND_API_KEY is never exposed to the browser.
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 // Verified sender on your Resend domain, e.g. "Founders HQ <apply@foundershq.org>".
 const FROM = process.env.JOIN_FROM_EMAIL ?? "";
 // Inbox that receives applications, e.g. "team@foundershq.org".
@@ -23,6 +20,9 @@ export async function POST(req: Request) {
       { status: 500 }
     );
   }
+
+  // Lazy-init so the module doesn't throw at build when env is absent.
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   let body: {
     name?: string;

@@ -88,7 +88,7 @@ export default function EcosystemHero() {
           <span className="h-px w-10 bg-ink" /> Ecosystem
         </p>
         <h1 className="font-display text-display font-bold text-ink">
-          <SplitText text="Six programs." as="span" className="block" />
+          <SplitText text="Everything you need." as="span" className="block" />
           <SplitText
             text="One operating system."
             as="span"
@@ -100,16 +100,16 @@ export default function EcosystemHero() {
           data-eco-sub
           className="mt-8 max-w-2xl text-base leading-relaxed text-text-muted md:text-lg"
         >
-          The HQ runs on six tightly connected things - cohorts, meetups, a
-          mentor network, demo days, studios and private forums. Each one is
-          designed to feed the next.
+          The HQ runs on a full stack of programs - community, capital, talent,
+          workspace, PR, growth and more - with incubation, acceleration and
+          fellowships on the way. Each one is designed to feed the next.
         </p>
 
         <div
           data-eco-meta
           className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-4 text-xs uppercase tracking-[0.3em] text-text-muted"
         >
-          <span>Six Programs</span>
+          <span>10 Live, More Coming</span>
           <span className="hidden h-1 w-1 rounded-full bg-text-muted sm:block" />
           <span>Cohort 01 Forming</span>
           <span className="hidden h-1 w-1 rounded-full bg-text-muted sm:block" />

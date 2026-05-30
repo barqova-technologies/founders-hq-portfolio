@@ -11,7 +11,7 @@ import MagneticButton from "@/components/ui/MagneticButton";
 export const metadata: Metadata = {
   title: "Ecosystem",
   description:
-    "Six connected programs - cohorts, meetups, a mentor bench, demo days, studios and private forums - for founders building from Lucknow. Cohort 01 is forming now.",
+    "A full stack of programs - community, capital, talent, workspace, PR, growth and more, with incubation and acceleration on the way - for founders building from Lucknow. Cohort 01 is forming now.",
 };
 
 export default function EcosystemPage() {
@@ -41,7 +41,7 @@ export default function EcosystemPage() {
             <div className="mt-10 inline-block">
               <Link href="/join">
                 <MagneticButton variant="primary">
-                  Join the Community <ArrowUpRight size={16} />
+                  Join the Waitlist <ArrowUpRight size={16} />
                 </MagneticButton>
               </Link>
             </div>

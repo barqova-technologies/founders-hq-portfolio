@@ -104,7 +104,7 @@ export default function JoinForm() {
       className="relative space-y-6 rounded-3xl border border-line bg-primary p-8 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.25)] md:p-12"
     >
       <div className="absolute -top-3 left-8 rounded-full bg-ink px-4 py-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-primary">
-        Join the Community
+        Join the Waitlist
       </div>
 
       {/* Honeypot - hidden from users, catches bots */}

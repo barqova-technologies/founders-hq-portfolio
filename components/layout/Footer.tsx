@@ -37,7 +37,7 @@ export default function Footer() {
               href="/join"
               className="group mt-8 inline-flex items-center gap-3 rounded-full border border-ink bg-ink px-5 py-3 text-sm font-medium text-primary transition-transform hover:-translate-y-0.5"
             >
-              Join the Community
+              Join the Waitlist
               <ArrowUpRight size={16} className="transition-transform group-hover:rotate-45" />
             </Link>
           </div>
@@ -63,7 +63,7 @@ export default function Footer() {
                 Programs
               </h4>
               <ul className="space-y-3 text-sm text-text-muted">
-                {PILLARS.map((p) => (
+                {PILLARS.filter((p) => !p.comingSoon).map((p) => (
                   <li key={p.slug}>
                     <Link href="/ecosystem" className="transition-colors hover:text-ink">
                       {p.title}

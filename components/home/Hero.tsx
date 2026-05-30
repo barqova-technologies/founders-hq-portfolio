@@ -256,7 +256,7 @@ export default function Hero() {
           <div data-hero-cta>
             <Link href="/join" className="inline-block">
               <MagneticButton variant="primary">
-                Join the Community <ArrowUpRight size={16} />
+                Join the Waitlist <ArrowUpRight size={16} />
               </MagneticButton>
             </Link>
           </div>

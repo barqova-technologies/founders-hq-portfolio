@@ -93,7 +93,7 @@ Help us build the room.
                   variant="inverse"
                   className="bg-primary text-ink hover:opacity-90"
                 >
-                  Join the Community
+                  Join the Waitlist
                   <ArrowUpRight size={16} />
                 </MagneticButton>
               </Link>

@@ -34,8 +34,8 @@ const tiles = [
   },
   {
     label: "Programs",
-    value: "Six, connected",
-    body: "Cohort, meetups, mentors, demo day, studio and forums.",
+    value: "10 live, more soon",
+    body: "Community, capital, talent, workspace, PR, growth - and more on the way.",
     span: "lg:col-span-5",
   },
 ];

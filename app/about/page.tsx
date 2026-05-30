@@ -32,7 +32,7 @@ export default function AboutPage() {
               <span className="brand-gradient-text">the ecosystem.</span>
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-text-muted">
-              Six connected programs, one founding cohort, and a community
+              A full stack of programs, one founding cohort, and a community
               we&rsquo;re building in the open. Take a closer look.
             </p>
             <div className="mt-10 inline-block">

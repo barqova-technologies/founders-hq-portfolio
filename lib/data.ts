@@ -2,12 +2,12 @@ export const SITE = {
   name: "Founder's HQ",
   short: "FHQ",
   // Canonical site URL - set NEXT_PUBLIC_SITE_URL in production.
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://foundershq.in",
-  tagline: "Where founders find their people.",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://foundershq.org",
+  tagline: "Build. Connect. Scale. Repeat.",
   manifesto:
     "Founder's HQ is a new working community for the people building from Lucknow and across Uttar Pradesh - a small room where conviction gets stress-tested, the right introductions happen early, and the next wave of UP startups gets built before anyone's posting about it. We're starting with one cohort and one rule: keep the room small, keep it honest.",
   // Contact - replace with real values before launch.
-  email: "hello@foundershq.in",
+  email: "hello@foundershq.org",
   // Leave empty to hide. Fill with a real number before launch.
   phone: "",
   city: "Lucknow",

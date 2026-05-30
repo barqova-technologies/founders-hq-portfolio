@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -39,18 +40,25 @@ export default function Navbar() {
         }`}
       >
         <div className="container-x flex items-center justify-between py-5">
-          <Link href="/" className="group flex items-center gap-3 leading-none">
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-ink text-[10px] font-bold tracking-[0.2em] text-primary">
-              FHQ
-            </span>
-            <span className="flex flex-col leading-none">
-              <span className="font-display text-lg font-bold tracking-tight text-ink">
-                Founder&rsquo;s HQ
-              </span>
-              <span className="mt-0.5 text-[10px] uppercase tracking-[0.3em] text-text-muted">
-                Community &middot; Cohorts &middot; Capital
-              </span>
-            </span>
+          <Link href="/" className="group flex items-center leading-none" aria-label={SITE.name}>
+            {/* black wordmark on light theme */}
+            <Image
+              src="/foundershq_light.png"
+              alt={SITE.name}
+              width={990}
+              height={738}
+              priority
+              className="h-[3.3rem] w-auto object-contain dark:hidden"
+            />
+            {/* white wordmark on dark theme */}
+            <Image
+              src="/foundershq_dark.png"
+              alt={SITE.name}
+              width={987}
+              height={734}
+              priority
+              className="hidden h-[3.3rem] w-auto object-contain dark:block"
+            />
           </Link>
 
           <nav className="hidden items-center gap-1 lg:flex">

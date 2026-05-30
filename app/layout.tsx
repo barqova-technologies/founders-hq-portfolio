@@ -25,7 +25,7 @@ const description =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "Founder's HQ - Where founders find their people.",
+    default: "Founder's HQ - Build. Connect. Scale. Repeat.",
     template: "%s - Founder's HQ",
   },
   description,
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Founder's HQ - Where founders find their people.",
+    title: "Founder's HQ - Build. Connect. Scale. Repeat.",
     description:
       "A new working community of operators and outliers, starting in Lucknow. Founding cohort forming now.",
     url: SITE.url,
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Founder's HQ - Where founders find their people.",
+    title: "Founder's HQ - Build. Connect. Scale. Repeat.",
     description:
       "A new working community of operators and outliers, starting in Lucknow. Founding cohort forming now.",
   },
@@ -72,7 +72,7 @@ const orgJsonLd = {
   "@type": "Organization",
   name: SITE.name,
   url: SITE.url,
-  logo: `${SITE.url}/icon`,
+  logo: `${SITE.url}/icon.png`,
   image: `${SITE.url}/opengraph-image`,
   description,
   email: SITE.email,

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram, Linkedin, Twitter, Youtube, ArrowUpRight } from "lucide-react";
 import { NAV_LINKS, PILLARS, SITE } from "@/lib/data";
 
@@ -12,18 +13,21 @@ export default function Footer() {
       <div className="container-x pt-20 pb-10">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <Link href="/" className="inline-flex items-center gap-3 leading-none">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-ink text-[10px] font-bold tracking-[0.2em] text-primary">
-                FHQ
-              </span>
-              <span className="flex flex-col leading-none">
-                <span className="font-display text-2xl font-bold tracking-tight text-ink">
-                  Founder&rsquo;s HQ
-                </span>
-                <span className="mt-1 text-[10px] uppercase tracking-[0.3em] text-text-muted">
-                  Community &middot; Cohorts &middot; Capital
-                </span>
-              </span>
+            <Link href="/" className="inline-flex items-center leading-none" aria-label={SITE.name}>
+              <Image
+                src="/foundershq_light.png"
+                alt={SITE.name}
+                width={990}
+                height={738}
+                className="h-[4.8rem] w-auto object-contain dark:hidden"
+              />
+              <Image
+                src="/foundershq_dark.png"
+                alt={SITE.name}
+                width={987}
+                height={734}
+                className="hidden h-[4.8rem] w-auto object-contain dark:block"
+              />
             </Link>
             <p className="mt-6 max-w-md text-base leading-relaxed text-text-muted">
               {SITE.tagline} A new working community of operators, builders and
@@ -97,7 +101,16 @@ export default function Footer() {
 
         <div className="mt-16 flex flex-col-reverse items-start justify-between gap-6 border-t border-line pt-8 md:flex-row md:items-center">
           <p className="text-xs text-text-muted">
-            &copy; 2026 Founder&rsquo;s HQ. Built quietly. Shared loudly.
+            &copy; 2026 Founder&rsquo;s HQ. Built quietly. Shared loudly. &middot;{" "}
+            Crafted by{" "}
+            <a
+              href="https://barqova.com"
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-ink/80 transition-colors hover:text-ink"
+            >
+              Barqova Technologies
+            </a>
           </p>
           <nav className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-text-muted">
             <Link href="/legal/terms" className="hover:text-ink">

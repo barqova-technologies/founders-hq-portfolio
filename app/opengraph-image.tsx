@@ -1,12 +1,16 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Founder's HQ - Where founders find their people.";
+export const alt = "Founder's HQ - Build. Connect. Scale. Repeat.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// Generated social share image (no static asset needed).
-export default function OpengraphImage() {
+// Generated social share image — real brand mark on the ink background.
+export default async function OpengraphImage() {
+  const logo = await fetch(
+    new URL("../public/foundershq_dark.png", import.meta.url)
+  ).then((res) => res.arrayBuffer());
+
   return new ImageResponse(
     (
       <div
@@ -15,63 +19,43 @@ export default function OpengraphImage() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 40,
           background: "#0A0A0A",
           color: "#FAFAFA",
           padding: 80,
           fontFamily: "sans-serif",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 16,
-            fontSize: 22,
-            letterSpacing: 6,
-            textTransform: "uppercase",
-            color: "#9A9A9A",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 44,
-              height: 44,
-              borderRadius: 12,
-              background: "#FAFAFA",
-              color: "#0A0A0A",
-              fontSize: 16,
-              fontWeight: 700,
-              letterSpacing: 2,
-            }}
-          >
-            FHQ
-          </div>
-          Founder&rsquo;s HQ
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          // @ts-expect-error - ArrayBuffer is a valid src for next/og ImageResponse
+          src={logo}
+          alt="Founder's HQ"
+          width={360}
+          height={268}
+        />
 
         <div
           style={{
             display: "flex",
-            fontSize: 78,
+            fontSize: 64,
             fontWeight: 700,
-            lineHeight: 1.05,
-            letterSpacing: -2,
-            maxWidth: 900,
+            letterSpacing: -1,
+            color: "#FAFAFA",
           }}
         >
-          Where founders find their people.
+          Build. Connect. Scale. Repeat.
         </div>
 
         <div
           style={{
             display: "flex",
             fontSize: 26,
-            color: "#B8B8B8",
-            letterSpacing: 2,
+            color: "#9A9A9A",
+            letterSpacing: 4,
+            textTransform: "uppercase",
           }}
         >
           Cohort 01 · Lucknow · Launching 2026

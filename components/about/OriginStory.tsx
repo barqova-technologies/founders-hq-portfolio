@@ -10,7 +10,7 @@ const paragraphs = [
   "Founder's HQ isn't built yet - it's being built, in the open, starting in Lucknow.",
   "The idea is old and simple: founders move faster in a room with a few others who actually get it. Most of what matters happens there - not on a stage, not in a press release.",
   "So we're starting deliberately. One founding cohort. A handful of mentors we've chosen by hand. Regular meetups in Lucknow. A demo day when the first cohort is ready. Forums to keep the rest of it private.",
-  "We optimize for the founder in the room - not the brand on the wall, not the next conference invite. We'll grow this with its members, and we'll keep every room small on purpose.",
+  "We optimize for the founder in the room - not the brand on the wall, not the next conference invite. We'll grow this with its members, and we'll keep every room curated on purpose.",
 ];
 
 export default function OriginStory() {
@@ -101,7 +101,7 @@ export default function OriginStory() {
               </li>
               <li className="flex items-baseline justify-between gap-4">
                 <span className="font-display text-4xl font-bold leading-none md:text-5xl">
-                  Small
+                  Small and Curated
                 </span>
                 <span className="text-sm text-text-muted">Rooms, always</span>
               </li>
@@ -111,7 +111,7 @@ export default function OriginStory() {
                 The Promise
               </p>
               <p className="mt-3 font-display text-xl font-semibold leading-snug">
-                We&rsquo;ll keep the rooms small. Forever.
+                We&rsquo;ll keep the rooms small and curated. Forever.
               </p>
             </div>
           </div>

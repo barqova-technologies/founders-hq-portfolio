@@ -72,12 +72,12 @@ export default function ValuesGrid() {
                 One Promise
               </p>
               <h3 className="mt-3 font-display text-3xl font-bold md:text-5xl">
-                We&rsquo;ll keep the rooms small.
+                We&rsquo;ll keep the rooms small and curated.
               </h3>
               <p className="mt-3 max-w-xl text-primary/70">
-                However big the community gets, cohorts, peer groups and dinners
-                won&rsquo;t. They&rsquo;ll stay under twelve people. They always
-                will be.
+                However big the community gets, cohorts, peer groups and
+                roundtables won&rsquo;t. They&rsquo;ll stay under twelve people.
+                They always will be.
               </p>
             </div>
             <div className="rounded-2xl border border-primary/30 px-5 py-3 text-xs uppercase tracking-[0.3em] text-primary/80">

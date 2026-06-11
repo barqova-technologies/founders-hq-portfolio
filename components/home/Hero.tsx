@@ -252,6 +252,15 @@ export default function Hero() {
           meetups and a hand-picked mentor bench.
         </p>
 
+        <p
+          data-hero-sub
+          className="text-sm font-bold uppercase tracking-[0.35em] sm:text-base"
+        >
+          <span className="brand-gradient-text">Exclusive.</span>{" "}
+          <span className="brand-gradient-text">Curated.</span>{" "}
+          <span className="brand-gradient-text">Invite Only.</span>
+        </p>
+
         <div className="flex flex-wrap items-center gap-4">
           <div data-hero-cta>
             <Link href="/join" className="inline-block">

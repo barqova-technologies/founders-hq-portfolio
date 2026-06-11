@@ -11,7 +11,7 @@ export default function NotFound() {
           This room <span className="brand-gradient-text">isn&rsquo;t open yet.</span>
         </h1>
         <p className="mt-6 text-text-muted">
-          The page you&rsquo;re looking for has either moved or never made it past the dinner table.
+          The page you&rsquo;re looking for has either moved or never made it past the front door.
         </p>
         <Link
           href="/"

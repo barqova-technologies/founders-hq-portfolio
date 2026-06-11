@@ -14,6 +14,36 @@ const joinOptions = [
   "Creator Member (Influencers)",
 ];
 
+const industryOptions = [
+  "Fintech",
+  "SaaS / Software",
+  "E-commerce / D2C",
+  "Healthtech",
+  "Edtech",
+  "AI / Deep Tech",
+  "Agritech",
+  "Logistics / Mobility",
+  "Media / Entertainment",
+  "Gaming",
+  "Real Estate / Proptech",
+  "Consumer / Retail",
+  "Manufacturing",
+  "Clean / Climate Tech",
+  "Foodtech",
+  "Other",
+];
+
+const stageOptions = [
+  "Idea Stage",
+  "Bootstrapped",
+  "Pre-Seed",
+  "Seed",
+  "Series A",
+  "Series B+",
+  "Growth / Scaling",
+  "Other",
+];
+
 // Submissions POST to the internal Resend-backed route (see app/api/join/route.ts).
 const FORM_ENDPOINT = "/api/join";
 
@@ -66,6 +96,10 @@ export default function JoinForm() {
       email: fd.get("email"),
       phone: fd.get("phone"),
       estYear: fd.get("estYear"),
+      city: fd.get("city"),
+      industry: fd.get("industry"),
+      stage: fd.get("stage"),
+      socialLink: fd.get("socialLink"),
       joinType: fd.get("joinType"),
       lookingFor: fd.get("lookingFor"),
     };
@@ -188,7 +222,43 @@ export default function JoinForm() {
         </Field>
       </div>
 
-      <div data-field>
+      <div data-field className="grid gap-6 md:grid-cols-2">
+        <Field label="Establishment City *">
+          <input
+            required
+            name="city"
+            type="text"
+            placeholder="e.g. Lucknow"
+            className="form-input"
+          />
+        </Field>
+        <Field label="Industry *">
+          <select required name="industry" defaultValue="" className="form-input bg-primary">
+            <option value="" disabled>
+              Select your industry
+            </option>
+            {industryOptions.map((o) => (
+              <option key={o} value={o}>
+                {o}
+              </option>
+            ))}
+          </select>
+        </Field>
+      </div>
+
+      <div data-field className="grid gap-6 md:grid-cols-2">
+        <Field label="Stage *">
+          <select required name="stage" defaultValue="" className="form-input bg-primary">
+            <option value="" disabled>
+              Select your stage
+            </option>
+            {stageOptions.map((o) => (
+              <option key={o} value={o}>
+                {o}
+              </option>
+            ))}
+          </select>
+        </Field>
         <Field label="How do you want to join? *">
           <select required name="joinType" defaultValue="" className="form-input bg-primary">
             <option value="" disabled>
@@ -200,6 +270,17 @@ export default function JoinForm() {
               </option>
             ))}
           </select>
+        </Field>
+      </div>
+
+      <div data-field>
+        <Field label="Social Media Link">
+          <input
+            name="socialLink"
+            type="url"
+            placeholder="LinkedIn, Instagram or website (optional)"
+            className="form-input"
+          />
         </Field>
       </div>
 

@@ -6,6 +6,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { prefersReducedMotion } from "@/lib/motion";
 import { Send, MailOpen, Phone, KeyRound } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
+import RotatingWord from "@/components/ui/RotatingWord";
+
+const FIRST_WORDS = ["meetup", "handshake", "intro", "room"];
 
 const STEPS = [
   {
@@ -33,7 +36,7 @@ const STEPS = [
     icon: KeyRound,
     label: "Step 04",
     title: "Welcome to the room",
-    body: "Channels, dinners, mentor intros - and a calendar invite to your first meetup.",
+    body: "Channels, roundtables, mentor intros - and a calendar invite to your first meetup.",
     when: "Day one",
   },
 ];
@@ -87,7 +90,16 @@ export default function ApplicationSteps() {
       <div className="container-x">
         <SectionHeading
           eyebrow="What Happens Next"
-          title="From hit-send to first dinner."
+          title={
+            <>
+              From hit-send to your first{" "}
+              <RotatingWord
+                words={FIRST_WORDS}
+                wordClassName="brand-gradient-text"
+              />
+              .
+            </>
+          }
           subtitle="Four steps. None of them automated."
         />
 
@@ -109,14 +121,14 @@ export default function ApplicationSteps() {
             />
           </svg>
 
-          <ol className="relative grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+          <ol className="-mx-5 relative flex snap-x snap-mandatory gap-8 overflow-x-auto px-5 pb-4 no-scrollbar sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-4 lg:gap-6">
             {STEPS.map((s, i) => {
               const Icon = s.icon;
               return (
                 <li
                   key={s.title}
                   data-step-card
-                  className="relative flex flex-col gap-4"
+                  className="relative flex min-w-[78%] shrink-0 snap-start flex-col gap-4 sm:min-w-0 sm:shrink"
                 >
                   <div className="flex items-center justify-between lg:block">
                     <span className="relative z-10 inline-flex h-[3.25rem] w-[3.25rem] items-center justify-center rounded-full border border-ink bg-primary text-ink">

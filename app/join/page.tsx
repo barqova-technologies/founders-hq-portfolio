@@ -20,11 +20,16 @@ export default function JoinPage() {
         <div className="container-x">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-5 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.4em] text-ink">
-              <span className="h-px w-10 bg-ink" /> Send a Note
+              <span className="h-px w-10 bg-ink" /> Get in touch
             </p>
             <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-ink md:text-5xl lg:text-6xl">
               One form. <span className="brand-gradient-text">Any reason.</span>
             </h2>
+            <p className="mt-6 text-sm font-bold uppercase tracking-[0.35em] sm:text-base">
+              <span className="brand-gradient-text">Exclusive.</span>{" "}
+              <span className="brand-gradient-text">Curated.</span>{" "}
+              <span className="brand-gradient-text">Invite Only.</span>
+            </p>
             <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-text-muted md:text-lg">
               Tell us a little about you and what you&rsquo;re after - mentor,
               partner, or future founder. The same form holds the Cohort 01

@@ -60,12 +60,12 @@ export default function FoundingNote() {
           subtitle="Founder's HQ is starting in Lucknow in 2026. Here's why the first room is the one to be in."
         />
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+        <div className="-mx-5 mt-14 flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 pb-4 no-scrollbar sm:mx-0 sm:px-0 sm:pb-0 lg:grid lg:grid-cols-3 lg:overflow-visible">
           {REASONS.map((r) => (
             <article
               key={r.title}
               data-fn
-              className="flex flex-col rounded-3xl border border-line bg-primary p-8"
+              className="flex min-w-[80%] shrink-0 snap-start flex-col rounded-3xl border border-line bg-primary p-8 sm:min-w-[46%] lg:min-w-0 lg:shrink"
             >
               <h3 className="font-display text-2xl font-semibold leading-snug text-ink">
                 {r.title}

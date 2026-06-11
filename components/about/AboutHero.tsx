@@ -101,7 +101,7 @@ export default function AboutHero() {
           className="mt-8 max-w-2xl text-base leading-relaxed text-text-muted md:text-lg"
         >
           One table, a few founders who get it, and a simple idea: the work that
-          matters happens in small rooms before it shows up anywhere else.
+          matters happens in curated rooms before it shows up anywhere else.
           We&rsquo;re starting that room in Lucknow - and we&rsquo;d rather build
           it honestly than pretend we&rsquo;ve been here for years.
         </p>

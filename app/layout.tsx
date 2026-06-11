@@ -20,7 +20,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 const description =
-  "Founder's HQ is a new working community of operators, builders and outliers - starting in Lucknow with a founding cohort, regular meetups and a hand-picked mentor bench. Now inviting mentors and partners; Cohort 01 forming.";
+  "Founder's HQ is an exclusive, curated, invite only founders community of operators, builders and outliers - starting in Lucknow with a founding cohort, regular meetups and a hand-picked mentor bench. Now inviting mentors and partners; Cohort 01 forming.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),

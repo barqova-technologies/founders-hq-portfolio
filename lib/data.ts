@@ -5,7 +5,7 @@ export const SITE = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://foundershq.org",
   tagline: "Build. Connect. Scale. Repeat.",
   manifesto:
-    "Founder's HQ is a new working community for the people building from Lucknow and across Uttar Pradesh - a small room where conviction gets stress-tested, the right introductions happen early, and the next wave of UP startups gets built before anyone's posting about it. We're starting with one cohort and one rule: keep the room small, keep it honest.",
+    "Founder's HQ is an exclusive, curated, invite only founders community for the people building from anywhere - a space where conviction gets stress-tested, the right introductions happen early, and the next wave of innovative startups gets built before anyone's posting about it. We're starting with one cohort and one rule: keep the room curated, keep it honest.",
   // Contact - replace with real values before launch.
   email: "team@foundershq.org",
   // Leave empty to hide. Fill with a real number before launch.
@@ -14,7 +14,7 @@ export const SITE = {
   address: "Founder's HQ · Lucknow, Uttar Pradesh, India",
   // Leave a handle empty to hide its icon. Fill with real profile URLs.
   socials: {
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/company/foundershq1",
     instagram: "",
     x: "",
     youtube: "",
@@ -275,7 +275,7 @@ export const MEETUP_FORMATS: MeetupFormat[] = [
     cadence: "Small & recurring",
   },
   {
-    title: "Founder Dinners",
+    title: "Founder Roundtables",
     audience: "Founders only",
     cadence: "Invite-based",
   },
@@ -311,7 +311,7 @@ export const ROADMAP = [
   {
     year: "Beyond",
     title: "Built in the open",
-    body: "We grow the community with its members - more rooms, more cities across UP - and keep every cohort small on purpose.",
+    body: "We grow the community with its members - more rooms, more cities - and keep every cohort curated on purpose.",
   },
 ];
 
@@ -323,7 +323,7 @@ export const VALUES = [
   },
   {
     title: "Quiet, Then Loud",
-    body: "The work happens in private dinners and small rooms. The posts come later, if at all.",
+    body: "The work happens in private rooms and small circles. The posts come later, if at all.",
     span: "",
   },
   {

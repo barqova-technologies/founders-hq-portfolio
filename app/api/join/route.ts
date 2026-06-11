@@ -31,6 +31,10 @@ export async function POST(req: Request) {
     email?: string;
     phone?: string;
     estYear?: string;
+    city?: string;
+    industry?: string;
+    stage?: string;
+    socialLink?: string;
     joinType?: string;
     lookingFor?: string;
   };
@@ -46,6 +50,10 @@ export async function POST(req: Request) {
   const email = (body.email ?? "").trim();
   const phone = (body.phone ?? "").trim();
   const estYear = (body.estYear ?? "").trim();
+  const city = (body.city ?? "").trim();
+  const industry = (body.industry ?? "").trim();
+  const stage = (body.stage ?? "").trim();
+  const socialLink = (body.socialLink ?? "").trim();
   const joinType = (body.joinType ?? "").trim();
   const lookingFor = (body.lookingFor ?? "").trim();
 
@@ -56,6 +64,9 @@ export async function POST(req: Request) {
     !email ||
     !phone ||
     !estYear ||
+    !city ||
+    !industry ||
+    !stage ||
     !joinType ||
     !lookingFor
   ) {
@@ -81,6 +92,10 @@ export async function POST(req: Request) {
       <p><strong>Email:</strong> ${esc(email)}</p>
       <p><strong>Contact Number:</strong> ${esc(phone)}</p>
       <p><strong>Establishment Year:</strong> ${esc(estYear)}</p>
+      <p><strong>Establishment City:</strong> ${esc(city)}</p>
+      <p><strong>Industry:</strong> ${esc(industry)}</p>
+      <p><strong>Stage:</strong> ${esc(stage)}</p>
+      <p><strong>Social Media Link:</strong> ${socialLink ? esc(socialLink) : "—"}</p>
       <p><strong>How they want to join:</strong> ${esc(joinType)}</p>
       <p><strong>What they're looking for:</strong><br/>${esc(lookingFor).replace(/\n/g, "<br/>")}</p>
     `,

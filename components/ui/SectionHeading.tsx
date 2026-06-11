@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { prefersReducedMotion } from "@/lib/motion";
 
 type Props = {
   eyebrow?: string;
-  title: string;
+  title: ReactNode;
   subtitle?: string;
   align?: "left" | "center";
   className?: string;

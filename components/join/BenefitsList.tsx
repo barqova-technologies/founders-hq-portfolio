@@ -80,14 +80,14 @@ export default function BenefitsList() {
           subtitle="No tiered memberships. No firehose emails. Six things, used heavily."
         />
 
-        <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="-mx-5 mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 no-scrollbar sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3">
           {BENEFITS.map((b, i) => {
             const Icon = b.icon;
             return (
               <li
                 key={b.title}
                 data-benefit
-                className="group relative flex flex-col rounded-3xl border border-line bg-primary p-7 transition-shadow duration-500 hover:shadow-[0_30px_60px_-30px_rgba(0,0,0,0.2)]"
+                className="group relative flex min-w-[80%] shrink-0 snap-start flex-col rounded-3xl border border-line bg-primary p-7 transition-shadow duration-500 hover:shadow-[0_30px_60px_-30px_rgba(0,0,0,0.2)] sm:min-w-0 sm:shrink"
               >
                 <div className="mb-7 flex items-center justify-between">
                   <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-surface text-ink transition-colors duration-500 group-hover:bg-ink group-hover:text-primary">
